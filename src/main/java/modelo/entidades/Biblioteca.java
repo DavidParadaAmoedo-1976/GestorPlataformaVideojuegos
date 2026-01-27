@@ -21,18 +21,6 @@ public class Biblioteca {
         this.estadoInstalacion = estadoInstalacion;
     }
 
-    public Biblioteca(Usuario usuario, Juego juego, LocalDate fechaAdquisicion, int horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
-        this.usuario = usuario;
-        this.juego = juego;
-        this.fechaAdquisicion = fechaAdquisicion;
-        this.horasDeJuego = horasDeJuego;
-        this.ultimaFechaDeJuego = ultimaFechaDeJuego;
-        this.estadoInstalacion = estadoInstalacion;
-    }
-
-    public Biblioteca() {
-    }
-
     public long getIdBiblioteca() {
         return idBiblioteca;
     }

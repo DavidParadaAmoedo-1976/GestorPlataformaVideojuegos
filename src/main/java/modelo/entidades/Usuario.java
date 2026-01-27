@@ -27,21 +27,6 @@ public class Usuario {
         this.estadoCuenta = estadoCuenta;
     }
 
-    public Usuario(String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, int estadoCuenta) {
-        this.nombreUsuario = nombreUsuario;
-        this.email = email;
-        this.password = password;
-        this.pais = pais;
-        this.fechaNacimiento = fechaNacimiento;
-        this.fechaRegistro = fechaRegistro;
-        this.avatar = avatar;
-        this.saldo = saldo;
-        this.estadoCuenta = estadoCuenta;
-    }
-
-    public Usuario() {
-    }
-
     public long getIdUsuario() {
         return idUsuario;
     }

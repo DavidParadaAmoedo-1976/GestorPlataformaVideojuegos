@@ -29,22 +29,6 @@ public class Juego {
         this.estado = estado;
     }
 
-    public Juego(int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, int clasificacionPorEdad, String[] idiomas, int estado) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.desarrollador = desarrollador;
-        this.fechaLanzamiento = fechaLanzamiento;
-        this.precioBase = precioBase;
-        this.descuento = descuento;
-        this.categoria = categoria;
-        this.clasificacionPorEdad = clasificacionPorEdad;
-        this.idiomas = idiomas;
-        this.estado = estado;
-    }
-
-    public Juego() {
-    }
-
     public long getIdJuego() {
         return idJuego;
     }

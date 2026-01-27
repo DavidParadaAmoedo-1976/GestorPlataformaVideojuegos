@@ -26,19 +26,6 @@ public class Compra {
         this.estado = estado;
     }
 
-    public Compra(Usuario usuario, Juego juego, LocalDate fechaCompra, PagoEnum metodoPago, double precio, int descuento, EstadoCompraEnum estado) {
-        this.usuario = usuario;
-        this.juego = juego;
-        this.fechaCompra = fechaCompra;
-        this.metodoPago = metodoPago;
-        this.precio = precio;
-        this.descuento = descuento;
-        this.estado = estado;
-    }
-
-    public Compra() {
-    }
-
     public long getIdCompra() {
         return idCompra;
     }

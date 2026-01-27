@@ -23,19 +23,6 @@ public class Reseña {
         this.estadoPublicacion = estadoPublicacion;
     }
 
-    public Reseña(Usuario usuario, Juego juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
-        this.usuario = usuario;
-        this.juego = juego;
-        this.recomendado = recomendado;
-        this.textoReseña = textoReseña;
-        this.cantidadHorasJugadas = cantidadHorasJugadas;
-        this.fechaPublicacion = fechaPublicacion;
-        this.estadoPublicacion = estadoPublicacion;
-    }
-
-    public Reseña() {
-    }
-
     public long getIdReseña() {
         return idReseña;
     }
