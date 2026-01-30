@@ -1,6 +1,6 @@
 package modelo.enums;
 
-public enum JuegoEnum {
+public enum EstadoJuegoEnum {
 
     SALIR("Salir"),
     NO_DISPONIBLE("No disponible"),
@@ -10,7 +10,7 @@ public enum JuegoEnum {
 
     private final String TEXTO;
 
-    JuegoEnum(String TEXTO) {
+    EstadoJuegoEnum(String TEXTO) {
         this.TEXTO = TEXTO;
     }
 

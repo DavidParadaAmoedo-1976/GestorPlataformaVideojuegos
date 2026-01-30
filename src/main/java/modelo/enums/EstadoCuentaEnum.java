@@ -1,6 +1,6 @@
 package modelo.enums;
 
-public enum UsuarioEnum {
+public enum EstadoCuentaEnum {
 
     SALIR("Salir"),
     ACTIVA("Activa"),
@@ -10,7 +10,7 @@ public enum UsuarioEnum {
 
     private final String TEXTO;
 
-    UsuarioEnum(String TEXTO) {
+    EstadoCuentaEnum(String TEXTO) {
         this.TEXTO = TEXTO;
     }
 

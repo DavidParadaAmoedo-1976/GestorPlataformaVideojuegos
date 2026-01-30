@@ -1,7 +1,5 @@
 package modelo.entidades;
 
-import modelo.enums.UsuarioEnum;
-
 import java.time.LocalDate;
 
 public class Usuario {
@@ -14,9 +12,9 @@ public class Usuario {
     private LocalDate fechaRegistro;
     private String avatar;
     private double saldo;
-    private UsuarioEnum estadoCuenta;
+    private int estadoCuenta;
 
-    public Usuario(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, UsuarioEnum estadoCuenta) {
+    public Usuario(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, int estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
@@ -101,11 +99,11 @@ public class Usuario {
         this.saldo = saldo;
     }
 
-    public UsuarioEnum getEstadoCuenta() {
+    public int getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(UsuarioEnum estadoCuenta) {
+    public void setEstadoCuenta(int estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
 }

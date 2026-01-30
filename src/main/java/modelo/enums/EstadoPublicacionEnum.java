@@ -1,18 +1,15 @@
 package modelo.enums;
 
-public enum IdiomaEnum {
-
+public enum EstadoPublicacionEnum {
 
     SALIR("Salir"),
-    ESPAÑOL("Español"),
-    INGLES("Ingles"),
-    FRANCES("Frances"),
-    ALEMAN("Aleman");
-
+    PUBLICADA("Publicada"),
+    OCULTA("Oculta"),
+    ELIMINADA("Eliminada");
 
     private final String TEXTO;
 
-    IdiomaEnum(String TEXTO) {
+    EstadoPublicacionEnum(String TEXTO) {
         this.TEXTO = TEXTO;
     }
 

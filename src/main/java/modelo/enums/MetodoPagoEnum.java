@@ -1,6 +1,6 @@
 package modelo.enums;
 
-public enum PagoEnum {
+public enum MetodoPagoEnum {
 
 
     SALIR("Salir"),
@@ -12,7 +12,7 @@ public enum PagoEnum {
 
     private final String TEXTO;
 
-    PagoEnum(String TEXTO) {
+    MetodoPagoEnum(String TEXTO) {
         this.TEXTO = TEXTO;
     }
 

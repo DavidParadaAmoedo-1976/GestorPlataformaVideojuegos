@@ -1,7 +1,5 @@
 package modelo.entidades;
 
-import modelo.enums.ReseñaEnum;
-
 import java.time.LocalDate;
 
 public class Reseña {
@@ -12,9 +10,9 @@ public class Reseña {
     private String textoReseña;
     private int cantidadHorasJugadas;
     private LocalDate fechaPublicacion;
-    private ReseñaEnum estadoPublicacion;
+    private int estadoPublicacion;
 
-    public Reseña(long idReseña, Usuario usuario, Juego juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, ReseñaEnum estadoPublicacion) {
+    public Reseña(long idReseña, Usuario usuario, Juego juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
         this.idReseña = idReseña;
         this.usuario = usuario;
         this.juego = juego;
@@ -81,11 +79,11 @@ public class Reseña {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public ReseñaEnum getEstadoPublicacion() {
+    public int getEstadoPublicacion() {
         return estadoPublicacion;
     }
 
-    public void setEstadoPublicacion(ReseñaEnum estadoPublicacion) {
+    public void setEstadoPublicacion(int estadoPublicacion) {
         this.estadoPublicacion = estadoPublicacion;
     }
 }

@@ -1,7 +1,7 @@
 package modelo.entidades;
 
 import modelo.enums.EstadoCompraEnum;
-import modelo.enums.PagoEnum;
+import modelo.enums.MetodoPagoEnum;
 
 import java.time.LocalDate;
 
@@ -10,12 +10,12 @@ public class Compra {
     private Usuario usuario;
     private Juego juego;
     private LocalDate fechaCompra;
-    private PagoEnum metodoPago;
+    private MetodoPagoEnum metodoPago;
     private double precio;
     private int descuento;
     private EstadoCompraEnum estado;
 
-    public Compra(long idCompra, Usuario usuario, Juego juego, LocalDate fechaCompra, PagoEnum metodoPago, double precio, int descuento, EstadoCompraEnum estado) {
+    public Compra(long idCompra, Usuario usuario, Juego juego, LocalDate fechaCompra, MetodoPagoEnum metodoPago, double precio, int descuento, EstadoCompraEnum estado) {
         this.idCompra = idCompra;
         this.usuario = usuario;
         this.juego = juego;
@@ -58,11 +58,11 @@ public class Compra {
         this.fechaCompra = fechaCompra;
     }
 
-    public PagoEnum getMetodoPago() {
+    public MetodoPagoEnum getMetodoPago() {
         return metodoPago;
     }
 
-    public void setMetodoPago(PagoEnum metodoPago) {
+    public void setMetodoPago(MetodoPagoEnum metodoPago) {
         this.metodoPago = metodoPago;
     }
 
