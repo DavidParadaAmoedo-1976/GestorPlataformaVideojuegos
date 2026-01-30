@@ -2,19 +2,19 @@ package modelo.entidades;
 
 import java.time.LocalDate;
 
-public class Reseña {
+public class ReseñaEntidad {
     private long idReseña;
-    private Usuario usuario;
-    private Juego juego;
+    private UsuarioEntidad usuarioEntidad;
+    private JuegoEntidad juego;
     private boolean recomendado;
     private String textoReseña;
     private int cantidadHorasJugadas;
     private LocalDate fechaPublicacion;
     private int estadoPublicacion;
 
-    public Reseña(long idReseña, Usuario usuario, Juego juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
+    public ReseñaEntidad(long idReseña, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
         this.idReseña = idReseña;
-        this.usuario = usuario;
+        this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;
         this.recomendado = recomendado;
         this.textoReseña = textoReseña;
@@ -31,19 +31,19 @@ public class Reseña {
         this.idReseña = idReseña;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public UsuarioEntidad getUsuario() {
+        return usuarioEntidad;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(UsuarioEntidad usuarioEntidad) {
+        this.usuarioEntidad = usuarioEntidad;
     }
 
-    public Juego getJuego() {
+    public JuegoEntidad getJuego() {
         return juego;
     }
 
-    public void setJuego(Juego juego) {
+    public void setJuego(JuegoEntidad juego) {
         this.juego = juego;
     }
 

@@ -2,7 +2,7 @@ package modelo.entidades;
 
 import java.time.LocalDate;
 
-public class Juego {
+public class JuegoEntidad {
     private long idJuego;
     private int titulo;
     private String descripcion;
@@ -15,7 +15,7 @@ public class Juego {
     private String[] idiomas;
     private int estado;
 
-    public Juego(long idJuego, int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, int clasificacionPorEdad, String[] idiomas, int estado) {
+    public JuegoEntidad(long idJuego, int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, int clasificacionPorEdad, String[] idiomas, int estado) {
         this.idJuego = idJuego;
         this.titulo = titulo;
         this.descripcion = descripcion;

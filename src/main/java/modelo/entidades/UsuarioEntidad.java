@@ -2,7 +2,7 @@ package modelo.entidades;
 
 import java.time.LocalDate;
 
-public class Usuario {
+public class UsuarioEntidad {
     private long idUsuario;
     private String nombreUsuario;
     private String email;
@@ -14,7 +14,7 @@ public class Usuario {
     private double saldo;
     private int estadoCuenta;
 
-    public Usuario(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, int estadoCuenta) {
+    public UsuarioEntidad(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, int estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;

@@ -5,19 +5,19 @@ import modelo.enums.MetodoPagoEnum;
 
 import java.time.LocalDate;
 
-public class Compra {
+public class CompraEntidad {
     private long idCompra;
-    private Usuario usuario;
-    private Juego juego;
+    private UsuarioEntidad usuarioEntidad;
+    private JuegoEntidad juego;
     private LocalDate fechaCompra;
     private MetodoPagoEnum metodoPago;
     private double precio;
     private int descuento;
     private EstadoCompraEnum estado;
 
-    public Compra(long idCompra, Usuario usuario, Juego juego, LocalDate fechaCompra, MetodoPagoEnum metodoPago, double precio, int descuento, EstadoCompraEnum estado) {
+    public CompraEntidad(long idCompra, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaCompra, MetodoPagoEnum metodoPago, double precio, int descuento, EstadoCompraEnum estado) {
         this.idCompra = idCompra;
-        this.usuario = usuario;
+        this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;
         this.fechaCompra = fechaCompra;
         this.metodoPago = metodoPago;
@@ -34,19 +34,19 @@ public class Compra {
         this.idCompra = idCompra;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public UsuarioEntidad getUsuario() {
+        return usuarioEntidad;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(UsuarioEntidad usuarioEntidad) {
+        this.usuarioEntidad = usuarioEntidad;
     }
 
-    public Juego getJuego() {
+    public JuegoEntidad getJuego() {
         return juego;
     }
 
-    public void setJuego(Juego juego) {
+    public void setJuego(JuegoEntidad juego) {
         this.juego = juego;
     }
 
