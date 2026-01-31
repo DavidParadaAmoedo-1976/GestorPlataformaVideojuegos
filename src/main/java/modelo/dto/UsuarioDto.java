@@ -1,5 +1,7 @@
 package modelo.dto;
 
+import modelo.enums.EstadoCuentaEnum;
+
 import java.time.LocalDate;
 
 public class UsuarioDto {
@@ -12,9 +14,9 @@ public class UsuarioDto {
     private LocalDate fechaRegistro;
     private String avatar;
     private double saldo;
-    private int estadoCuenta;
+    private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioDto(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, int estadoCuenta) {
+    public UsuarioDto(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
@@ -99,11 +101,11 @@ public class UsuarioDto {
         this.saldo = saldo;
     }
 
-    public int getEstadoCuenta() {
+    public EstadoCuentaEnum getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(int estadoCuenta) {
+    public void setEstadoCuenta(EstadoCuentaEnum estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
 }
