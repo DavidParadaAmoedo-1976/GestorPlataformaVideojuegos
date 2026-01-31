@@ -1,8 +1,11 @@
-package modelo.entidades;
+package modelo.dto;
+
+import modelo.entidades.JuegoEntidad;
+import modelo.entidades.UsuarioEntidad;
 
 import java.time.LocalDate;
 
-public class ReseñaEntidad {
+public class ReseniaDto {
     private long idReseña;
     private UsuarioEntidad usuarioEntidad;
     private JuegoEntidad juego;
@@ -12,7 +15,7 @@ public class ReseñaEntidad {
     private LocalDate fechaPublicacion;
     private int estadoPublicacion;
 
-    public ReseñaEntidad(long idReseña, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
+    public ReseniaDto(long idReseña, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
         this.idReseña = idReseña;
         this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;

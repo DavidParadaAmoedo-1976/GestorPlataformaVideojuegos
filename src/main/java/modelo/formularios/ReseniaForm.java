@@ -1,4 +1,4 @@
 package modelo.formularios;
 
-public class utilFormularios {
+public class ReseniaForm {
 }
