@@ -1,6 +1,7 @@
 package modelo.dto;
 
 import modelo.enums.EstadoCuentaEnum;
+import modelo.enums.PaisEnum;
 
 import java.time.LocalDate;
 
@@ -9,18 +10,20 @@ public class UsuarioDto {
     private String nombreUsuario;
     private String email;
     private String password;
-    private String pais;
+    private String nombreReal;
+    private PaisEnum pais;
     private LocalDate fechaNacimiento;
     private LocalDate fechaRegistro;
     private String avatar;
     private double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioDto(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioDto(long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;
+        this.nombreReal = nombreReal;
         this.pais = pais;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
@@ -61,11 +64,19 @@ public class UsuarioDto {
         this.password = password;
     }
 
-    public String getPais() {
+    public String getNombreReal() {
+        return nombreReal;
+    }
+
+    public void setNombreReal(String nombreReal) {
+        this.nombreReal = nombreReal;
+    }
+
+    public PaisEnum getPais() {
         return pais;
     }
 
-    public void setPais(String pais) {
+    public void setPais(PaisEnum pais) {
         this.pais = pais;
     }
 
@@ -79,10 +90,6 @@ public class UsuarioDto {
 
     public LocalDate getFechaRegistro() {
         return fechaRegistro;
-    }
-
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
     }
 
     public String getAvatar() {

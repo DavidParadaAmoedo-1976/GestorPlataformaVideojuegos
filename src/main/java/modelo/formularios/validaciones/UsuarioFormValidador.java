@@ -1,0 +1,124 @@
+package modelo.formularios.validaciones;
+
+import modelo.enums.PaisEnum;
+import modelo.enums.TipoErrorEnum;
+import modelo.formularios.UsuarioForm;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+public class UsuarioFormValidador {
+
+    private static final int EDAD_MINIMA = 13;
+    private static final int PASSWORD_MAX = 20;
+    private static final int PASSWORD_MINIMA = 8;
+    private static final int LONGITUD_AVATAR_MAX = 100;
+    private static final int LONGITUD_EMAIL_USUARIO_MAX = 100;
+    private static final int LONGITUD_NOMBRE_REAL_MINIMA = 2;
+    private static final int LONGITUD_NOMBRE_REAL_MAXIMA = 50;
+    private static final Pattern USERNAME_PATTERN =
+            Pattern.compile("^[A-Za-z_-][A-Za-z0-9_-]{2,19}$");
+    private static final Pattern EMAIL_PATTERN =
+            Pattern.compile("^(?!\\.)[a-zA-Z0-9._%+-]+(?<!\\.)@[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+$");
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$");
+
+
+    private UsuarioFormValidador() {
+    }
+
+    public static void validar(UsuarioForm form) throws ValidationException {
+
+        List<ErrorModel> errores = new ArrayList<>();
+
+        if (form == null) {
+            errores.add(new ErrorModel("form", TipoErrorEnum.OTRO));
+            throw new ValidationException(errores);
+        }
+
+        // nombreUsuario
+        ValidacionesComunes.obligatorio("nombreUsuario", form.getNombreUsuario(), errores);
+        validarNombreUsuario(form.getNombreUsuario(), errores);
+
+        // email
+        ValidacionesComunes.obligatorio("email", form.getEmail(), errores);
+        ValidacionesComunes.longitudMaxima("email", form.getEmail(),LONGITUD_EMAIL_USUARIO_MAX, errores );
+        validarFormatoEmail(form.getEmail(), errores);
+
+        // password
+        ValidacionesComunes.obligatorio("password", form.getPassword(), errores);
+        ValidacionesComunes.longitudMinima("password", form.getPassword(),PASSWORD_MINIMA,errores);
+        ValidacionesComunes.longitudMaxima("password", form.getPassword(), PASSWORD_MAX, errores);
+        validarFormatoPassword(form.getPassword(), errores);
+
+        // nombre real
+        ValidacionesComunes.obligatorio("nombreReal", form.getNombreUsuario(), errores);
+        ValidacionesComunes.longitudMinima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MINIMA,errores);
+        ValidacionesComunes.longitudMaxima("nombreReal", form.getNombreReal(),  LONGITUD_NOMBRE_REAL_MAXIMA,errores);
+
+        // pais
+        validarPaisEnLista(form.getPais(),errores);
+
+        // fechaNacimiento
+        validarFechaNacimiento(form.getFechaNacimiento(), errores);
+
+        // avatar
+        ValidacionesComunes.longitudMaxima("avatar", form.getAvatar(), LONGITUD_AVATAR_MAX,errores);
+
+        //
+
+
+
+        if (!errores.isEmpty()) {
+            throw new ValidationException(errores);
+        }
+    }
+
+    private static void validarPaisEnLista(PaisEnum pais, List<ErrorModel> errores) {
+        if (pais == null) {
+            errores.add(new ErrorModel("pais", TipoErrorEnum.OBLIGATORIO));
+        }
+
+    }
+
+    private static void validarNombreUsuario(String nombre, List<ErrorModel> errores) {
+        if (nombre == null || nombre.isBlank()) {
+            return;
+        }
+        if (!USERNAME_PATTERN.matcher(nombre).matches()) {
+            errores.add(new ErrorModel("nombreUsuario", TipoErrorEnum.FORMATO_INVALIDO));
+        }
+    }
+
+    private static void validarFormatoPassword(String password, List<ErrorModel> errores) {
+        if (password != null && !password.isBlank()
+                && !PASSWORD_PATTERN.matcher(password).matches()) {
+            errores.add(new ErrorModel("password", TipoErrorEnum.FORMATO_INVALIDO));
+        }
+    }
+
+    private static void validarFormatoEmail(String email, List<ErrorModel> errores) {
+        if (email != null && !email.isBlank()
+                && !EMAIL_PATTERN.matcher(email).matches()) {
+            errores.add(new ErrorModel("email", TipoErrorEnum.FORMATO_INVALIDO));
+        }
+    }
+
+    private static void validarFechaNacimiento(LocalDate fecha, List<ErrorModel> errores) {
+        if (fecha == null) {
+            errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.OBLIGATORIO));
+            return;
+        }
+        if (fecha.isAfter(LocalDate.now())) {
+            errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.VALOR_NEGATIVO));
+        }
+
+        int edad = Period.between(fecha, LocalDate.now()).getYears();
+        if (edad < EDAD_MINIMA) {
+            errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.VALOR_EXCEDIDO));
+        }
+    }
+}

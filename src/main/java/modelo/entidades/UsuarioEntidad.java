@@ -1,7 +1,10 @@
 package modelo.entidades;
 
 import modelo.enums.EstadoCuentaEnum;
+import modelo.enums.PaisEnum;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class UsuarioEntidad {
@@ -9,18 +12,20 @@ public class UsuarioEntidad {
     private String nombreUsuario;
     private String email;
     private String password;
-    private String pais;
+    private String nombreReal;
+    private PaisEnum pais;
     private LocalDate fechaNacimiento;
     private LocalDate fechaRegistro;
     private String avatar;
     private double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioEntidad(long idUsuario, String nombreUsuario, String email, String password, String pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioEntidad(long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;
+        this.nombreReal = nombreReal;
         this.pais = pais;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
@@ -61,11 +66,19 @@ public class UsuarioEntidad {
         this.password = password;
     }
 
-    public String getPais() {
-        return pais;
+    public String getNombreReal() {
+        return nombreReal;
     }
 
-    public void setPais(String pais) {
+    public void setNombreReal(String nombreReal) {
+        this.nombreReal = nombreReal;
+    }
+
+    public PaisEnum getPais() {
+        return this.pais;
+    }
+
+    public void setPais(PaisEnum pais) {
         this.pais = pais;
     }
 
@@ -81,10 +94,6 @@ public class UsuarioEntidad {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
     public String getAvatar() {
         return avatar;
     }
@@ -98,7 +107,12 @@ public class UsuarioEntidad {
     }
 
     public void setSaldo(double saldo) {
-        this.saldo = saldo;
+        if (saldo < 0) {
+            throw new IllegalArgumentException("El saldo no puede ser negativo");
+        }
+        BigDecimal bd = BigDecimal.valueOf(saldo)
+                .setScale(2, RoundingMode.HALF_UP);
+        this.saldo = bd.doubleValue();
     }
 
     public EstadoCuentaEnum getEstadoCuenta() {

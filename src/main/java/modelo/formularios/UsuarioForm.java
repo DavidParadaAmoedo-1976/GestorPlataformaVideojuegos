@@ -1,5 +1,7 @@
 package modelo.formularios;
 
+import modelo.enums.PaisEnum;
+
 import java.time.LocalDate;
 
 public class UsuarioForm {
@@ -7,18 +9,20 @@ public class UsuarioForm {
     private String nombreUsuario;
     private String email;
     private String password;
-    private String pais;
+    private String nombreReal;
+    private PaisEnum pais;
     private LocalDate fechaNacimiento;
     private String avatar;
 
     public UsuarioForm() {
     }
 
-    public UsuarioForm(String nombreUsuario, String email, String password,
-                       String pais, LocalDate fechaNacimiento, String avatar) {
+    public UsuarioForm(String nombreUsuario, String email, String password, String nombreReal,
+                       PaisEnum pais, LocalDate fechaNacimiento, String avatar) {
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;
+        this.nombreReal = nombreReal;
         this.pais = pais;
         this.fechaNacimiento = fechaNacimiento;
         this.avatar = avatar;
@@ -48,12 +52,16 @@ public class UsuarioForm {
         this.password = password;
     }
 
-    public String getPais() {
-        return pais;
+    public String getNombreReal() {
+        return nombreReal;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setNombreReal(String nombreReal) {
+        this.nombreReal = nombreReal;
+    }
+
+    public PaisEnum getPais() {
+        return pais;
     }
 
     public LocalDate getFechaNacimiento() {

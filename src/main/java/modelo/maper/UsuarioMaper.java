@@ -18,6 +18,7 @@ public class UsuarioMaper {
                 entidad.getNombreUsuario(),
                 entidad.getEmail(),
                 entidad.getPassword(),
+                entidad.getNombreUsuario(),
                 entidad.getPais(),
                 entidad.getFechaNacimiento(),
                 entidad.getFechaRegistro(),

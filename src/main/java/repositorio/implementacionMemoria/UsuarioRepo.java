@@ -21,6 +21,7 @@ public class UsuarioRepo implements IUsuarioRepo {
                 form.getNombreUsuario(),
                 form.getEmail(),
                 form.getPassword(),
+                form.getNombreReal(),
                 form.getPais(),
                 form.getFechaNacimiento(),
                 LocalDate.now(),
@@ -53,7 +54,8 @@ public class UsuarioRepo implements IUsuarioRepo {
 
         usuario.setNombreUsuario(form.getNombreUsuario());
         usuario.setEmail(form.getEmail());
-        usuario.setPais(form.getPais());
+        usuario.setNombreReal(form.getNombreReal());
+        usuario.getPais();
         usuario.setAvatar(form.getAvatar());
 
         return usuario;
@@ -62,6 +64,22 @@ public class UsuarioRepo implements IUsuarioRepo {
     @Override
     public boolean eliminar(Long id) {
         return usuariosEntidad.removeIf(u -> u.getIdUsuario() == id);
+    }
+
+    @Override
+    public UsuarioEntidad buscarPorEmail(String email) {
+        return usuariosEntidad.stream()
+                .filter(u -> u.getEmail().equalsIgnoreCase(email))
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public UsuarioEntidad buscarPorNombreUsuario(String nombreUsuario) {
+        return usuariosEntidad.stream()
+                .filter(u -> u.getNombreUsuario().equalsIgnoreCase(nombreUsuario))
+                .findFirst()
+                .orElse(null);
     }
 
     private long generarId() {

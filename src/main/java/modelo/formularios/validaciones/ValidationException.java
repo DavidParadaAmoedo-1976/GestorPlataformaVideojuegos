@@ -1,4 +1,4 @@
-package modelo.formularios;
+package modelo.formularios.validaciones;
 
 import java.util.List;
 
