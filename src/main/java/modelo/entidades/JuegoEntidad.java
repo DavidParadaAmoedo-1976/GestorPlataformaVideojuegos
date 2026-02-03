@@ -1,5 +1,7 @@
 package modelo.entidades;
 
+import modelo.enums.ClasificacionJuegoEnum;
+
 import java.time.LocalDate;
 
 public class JuegoEntidad {
@@ -11,11 +13,11 @@ public class JuegoEntidad {
     private double precioBase;
     private int descuento;
     private String categoria;
-    private int clasificacionPorEdad;
+    private ClasificacionJuegoEnum clasificacionPorEdad;
     private String[] idiomas;
     private int estado;
 
-    public JuegoEntidad(long idJuego, int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, int clasificacionPorEdad, String[] idiomas, int estado) {
+    public JuegoEntidad(long idJuego, int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, ClasificacionJuegoEnum clasificacionPorEdad, String[] idiomas, int estado) {
         this.idJuego = idJuego;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -27,6 +29,10 @@ public class JuegoEntidad {
         this.clasificacionPorEdad = clasificacionPorEdad;
         this.idiomas = idiomas;
         this.estado = estado;
+    }
+
+    public JuegoEntidad() {
+
     }
 
     public long getIdJuego() {
@@ -93,11 +99,11 @@ public class JuegoEntidad {
         this.categoria = categoria;
     }
 
-    public int getClasificacionPorEdad() {
+    public ClasificacionJuegoEnum getClasificacionPorEdad() {
         return clasificacionPorEdad;
     }
 
-    public void setClasificacionPorEdad(int clasificacionPorEdad) {
+    public void setClasificacionPorEdad(ClasificacionJuegoEnum clasificacionPorEdad) {
         this.clasificacionPorEdad = clasificacionPorEdad;
     }
 

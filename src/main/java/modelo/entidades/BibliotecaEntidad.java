@@ -2,19 +2,23 @@ package modelo.entidades;
 
 import java.time.LocalDate;
 
+
 public class BibliotecaEntidad {
+
+
     private long idBiblioteca;
-    private UsuarioEntidad usuarioEntidad;
-    private JuegoEntidad juego;
+    private long idUsuario;
+    private long idJuego;
     private LocalDate fechaAdquisicion;
     private int horasDeJuego;
     private LocalDate ultimaFechaDeJuego;
     private boolean estadoInstalacion;
 
-    public BibliotecaEntidad(long idBiblioteca, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaAdquisicion, int horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
+
+    public BibliotecaEntidad(long idBiblioteca, long idUsuario, long idJuego, LocalDate fechaAdquisicion, int horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
         this.idBiblioteca = idBiblioteca;
-        this.usuarioEntidad = usuarioEntidad;
-        this.juego = juego;
+        this.idUsuario = idUsuario;
+        this.idJuego = idJuego;
         this.fechaAdquisicion = fechaAdquisicion;
         this.horasDeJuego = horasDeJuego;
         this.ultimaFechaDeJuego = ultimaFechaDeJuego;
@@ -29,25 +33,45 @@ public class BibliotecaEntidad {
         this.idBiblioteca = idBiblioteca;
     }
 
-    public UsuarioEntidad getUsuario() {
-        return usuarioEntidad;
+    public long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(UsuarioEntidad usuarioEntidad) {
-        this.usuarioEntidad = usuarioEntidad;
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public JuegoEntidad getJuego() {
-        return juego;
+    public long getIdJuego() {
+        return idJuego;
     }
 
-    public void setJuego(JuegoEntidad juego) {
-        this.juego = juego;
+    public void setIdJuego(long idJuego) {
+        this.idJuego = idJuego;
     }
 
     public LocalDate getFechaAdquisicion() {
         return fechaAdquisicion;
     }
+
+    //    public UsuarioEntidad getUsuario() {
+//        return usuarioEntidad;
+//    }
+//
+//    public void setUsuario(UsuarioEntidad usuarioEntidad) {
+//        this.usuarioEntidad = usuarioEntidad;
+//    }
+//
+//    public JuegoEntidad getJuego() {
+//        return idJuego;
+//    }
+//
+//    public void setJuego(JuegoEntidad juego) {
+//        this.idJuego = juego;
+//    }
+//
+//    public LocalDate getFechaAdquisicion() {
+//        return fechaAdquisicion;
+//    }
 
     public void setFechaAdquisicion(LocalDate fechaAdquisicion) {
         this.fechaAdquisicion = fechaAdquisicion;

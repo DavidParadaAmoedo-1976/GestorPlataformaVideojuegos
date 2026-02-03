@@ -34,6 +34,10 @@ public class UsuarioEntidad {
         this.estadoCuenta = estadoCuenta;
     }
 
+    public UsuarioEntidad() {
+
+    }
+
     public long getIdUsuario() {
         return idUsuario;
     }

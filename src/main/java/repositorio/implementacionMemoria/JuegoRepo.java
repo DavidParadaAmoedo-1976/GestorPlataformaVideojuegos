@@ -11,36 +11,52 @@ import java.util.List;
 public class JuegoRepo implements IJuegoRepo {
     private final List<JuegoEntidad> juegoEntidades=new ArrayList<>();
 
-    @Override
-    public Object crear(Object formulario) {
-        return null;
-    }
-
-    @Override
-    public Object buscarPorId(Object id) {
-        return null;
-    }
-
-    @Override
-    public List listarTodos() {
-        return List.of();
-    }
-
-    @Override
-    public Object actualizar(Object id, Object formulario) {
-        return null;
-    }
-
-    @Override
-    public boolean eliminar(Object id) {
-        return false;
-    }
 
     private long generarId() {
         return juegoEntidades.stream()
                 .mapToLong(juego -> juego.getIdJuego())
                 .max()
                 .orElse(0L) + 1;
+    }
+
+    @Override
+    public JuegoEntidad buscarPorTitulo(String titulo) {
+        return null;
+    }
+
+    @Override
+    public JuegoEntidad buscarPorCategoria(String categoria) {
+        return null;
+    }
+
+    @Override
+    public JuegoEntidad buscarPorPrecio(Double precio) {
+        return null;
+    }
+
+    @Override
+    public JuegoEntidad crear(JuegoForm formulario) {
+        return null;
+    }
+
+    @Override
+    public JuegoEntidad buscarPorId(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<JuegoEntidad> listarTodos() {
+        return List.of();
+    }
+
+    @Override
+    public JuegoEntidad actualizar(Long id, JuegoForm formulario) {
+        return null;
+    }
+
+    @Override
+    public boolean eliminar(Long id) {
+        return false;
     }
 }
 
