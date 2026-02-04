@@ -30,8 +30,8 @@ public class UsuarioEntidad {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
         this.avatar = avatar;
-        this.saldo = saldo;
-        this.estadoCuenta = estadoCuenta;
+        this.saldo = 0;
+        this.estadoCuenta = EstadoCuentaEnum.ACTIVA;
     }
 
     public UsuarioEntidad() {

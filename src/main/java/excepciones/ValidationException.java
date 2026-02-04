@@ -1,4 +1,6 @@
-package modelo.formularios.validaciones;
+package excepciones;
+
+import modelo.formularios.validaciones.ErrorModel;
 
 import java.util.List;
 

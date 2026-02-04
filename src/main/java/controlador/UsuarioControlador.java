@@ -6,7 +6,7 @@ import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
 import modelo.formularios.validaciones.ErrorModel;
 import modelo.formularios.validaciones.UsuarioFormValidador;
-import modelo.formularios.validaciones.ValidationException;
+import excepciones.ValidationException;
 import modelo.maper.UsuarioMaper;
 import repositorio.interfaz.IUsuarioRepo;
 

@@ -1,5 +1,6 @@
 package modelo.formularios.validaciones;
 
+import excepciones.ValidationException;
 import modelo.enums.PaisEnum;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
