@@ -1,10 +1,13 @@
 package modelo.entidades;
 
+import modelo.enums.ClasificacionJuegoEnum;
+
 import java.time.LocalDate;
 
 
 public class BibliotecaEntidad {
-
+    private UsuarioEntidad usuario = new UsuarioEntidad();
+    private JuegoEntidad juego = new JuegoEntidad();
 
     private long idBiblioteca;
     private long idUsuario;
@@ -33,45 +36,27 @@ public class BibliotecaEntidad {
         this.idBiblioteca = idBiblioteca;
     }
 
-    public long getIdUsuario() {
+
+
+    public long getUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
+    public void setUsuario(long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public long getIdJuego() {
+    public long getJuego() {
         return idJuego;
     }
 
-    public void setIdJuego(long idJuego) {
-        this.idJuego = idJuego;
+    public void setJuego(long juego) {
+        this.idJuego = juego;
     }
 
     public LocalDate getFechaAdquisicion() {
         return fechaAdquisicion;
     }
-
-    //    public UsuarioEntidad getUsuario() {
-//        return usuarioEntidad;
-//    }
-//
-//    public void setUsuario(UsuarioEntidad usuarioEntidad) {
-//        this.usuarioEntidad = usuarioEntidad;
-//    }
-//
-//    public JuegoEntidad getJuego() {
-//        return idJuego;
-//    }
-//
-//    public void setJuego(JuegoEntidad juego) {
-//        this.idJuego = juego;
-//    }
-//
-//    public LocalDate getFechaAdquisicion() {
-//        return fechaAdquisicion;
-//    }
 
     public void setFechaAdquisicion(LocalDate fechaAdquisicion) {
         this.fechaAdquisicion = fechaAdquisicion;

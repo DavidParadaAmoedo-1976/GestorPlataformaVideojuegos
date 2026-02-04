@@ -68,8 +68,8 @@ public class UsuarioFormValidador {
         // avatar
         ValidacionesComunes.longitudMaxima("avatar", form.getAvatar(), LONGITUD_AVATAR_MAX,errores);
 
-        //
-
+        // saldo
+        ValidacionesComunes.valorNoNegativo("saldo",form.getSaldo(), errores);
 
 
         if (!errores.isEmpty()) {

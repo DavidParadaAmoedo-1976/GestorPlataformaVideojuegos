@@ -1,5 +1,6 @@
 package modelo.formularios;
 
+import modelo.enums.EstadoCuentaEnum;
 import modelo.enums.PaisEnum;
 
 import java.time.LocalDate;
@@ -13,6 +14,8 @@ public class UsuarioForm {
     private PaisEnum pais;
     private LocalDate fechaNacimiento;
     private String avatar;
+    private double saldo;
+    private EstadoCuentaEnum estadoCuenta;
 
     public UsuarioForm() {
     }
@@ -26,6 +29,8 @@ public class UsuarioForm {
         this.pais = pais;
         this.fechaNacimiento = fechaNacimiento;
         this.avatar = avatar;
+        this.saldo = 0;
+        this.estadoCuenta = EstadoCuentaEnum.ACTIVA;
     }
 
     public String getNombreUsuario() {
@@ -78,6 +83,26 @@ public class UsuarioForm {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public void setPais(PaisEnum pais) {
+        this.pais = pais;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public EstadoCuentaEnum getEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(EstadoCuentaEnum estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
     }
 }
 
