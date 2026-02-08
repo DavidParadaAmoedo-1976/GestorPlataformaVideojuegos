@@ -1,4 +1,4 @@
-package repositorio.interfaz;
+package repositorio.interfaces;
 
 import java.util.List;
 

@@ -14,14 +14,14 @@ public class UsuarioForm {
     private PaisEnum pais;
     private LocalDate fechaNacimiento;
     private String avatar;
-    private double saldo;
+    private Double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
     public UsuarioForm() {
     }
 
     public UsuarioForm(String nombreUsuario, String email, String password, String nombreReal,
-                       PaisEnum pais, LocalDate fechaNacimiento, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
+                       PaisEnum pais, LocalDate fechaNacimiento, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;
@@ -61,7 +61,7 @@ public class UsuarioForm {
         return avatar;
     }
 
-    public double getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 

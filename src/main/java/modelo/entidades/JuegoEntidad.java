@@ -1,53 +1,56 @@
 package modelo.entidades;
 
 import modelo.enums.ClasificacionJuegoEnum;
+import modelo.enums.EstadoJuegoEnum;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class JuegoEntidad {
-    private long idJuego;
-    private int titulo;
+    private Long idJuego;
+    private String titulo;
     private String descripcion;
     private String desarrollador;
     private LocalDate fechaLanzamiento;
-    private double precioBase;
-    private int descuento;
+    private Double precioBase;
+    private Integer descuento;
     private String categoria;
     private ClasificacionJuegoEnum clasificacionPorEdad;
     private String[] idiomas;
-    private int estado;
+    private EstadoJuegoEnum estado;
 
-    public JuegoEntidad(long idJuego, int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, ClasificacionJuegoEnum clasificacionPorEdad, String[] idiomas, int estado) {
+    public JuegoEntidad(Long idJuego, String titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, Double precioBase, Integer descuento, String categoria, ClasificacionJuegoEnum clasificacionPorEdad, String[] idiomas, EstadoJuegoEnum estado) {
         this.idJuego = idJuego;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.desarrollador = desarrollador;
         this.fechaLanzamiento = fechaLanzamiento;
         this.precioBase = precioBase;
-        this.descuento = descuento;
+        this.descuento = 0;
         this.categoria = categoria;
         this.clasificacionPorEdad = clasificacionPorEdad;
         this.idiomas = idiomas;
-        this.estado = estado;
+        this.estado = EstadoJuegoEnum.DISPONIBLE;
     }
 
     public JuegoEntidad() {
 
     }
 
-    public long getIdJuego() {
+    public Long getIdJuego() {
         return idJuego;
     }
 
-    public void setIdJuego(long idJuego) {
+    public void setIdJuego(Long idJuego) {
         this.idJuego = idJuego;
     }
 
-    public int getTitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(int titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
@@ -75,19 +78,24 @@ public class JuegoEntidad {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
-    public double getPrecioBase() {
+    public Double getPrecioBase() {
         return precioBase;
     }
 
-    public void setPrecioBase(double precioBase) {
-        this.precioBase = precioBase;
+    public void setPrecioBase(Double precioBase) {
+        if (precioBase < 0) {
+            throw new IllegalArgumentException("El saldo no puede ser negativo");
+        }
+        BigDecimal bd = BigDecimal.valueOf(precioBase)
+                .setScale(2, RoundingMode.HALF_UP);
+        this.precioBase = bd.doubleValue();
     }
 
-    public int getDescuento() {
+    public Integer getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(int descuento) {
+    public void setDescuento(Integer descuento) {
         this.descuento = descuento;
     }
 
@@ -115,11 +123,11 @@ public class JuegoEntidad {
         this.idiomas = idiomas;
     }
 
-    public int getEstado() {
+    public EstadoJuegoEnum getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(EstadoJuegoEnum estado) {
         this.estado = estado;
     }
 }

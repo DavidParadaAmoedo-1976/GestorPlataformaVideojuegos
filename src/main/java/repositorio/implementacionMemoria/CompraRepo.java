@@ -2,7 +2,7 @@ package repositorio.implementacionMemoria;
 
 import modelo.entidades.CompraEntidad;
 import modelo.formularios.CompraForm;
-import repositorio.interfaz.ICompraRepo;
+import repositorio.interfaces.ICompraRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class CompraRepo implements ICompraRepo {
     private final List<CompraEntidad>  compraEntidad = new ArrayList<>();
 
 
-    private long generarId() {
+    private Long generarId() {
         return compraEntidad.stream()
                 .mapToLong(compra -> compra.getIdCompra())
                 .max()

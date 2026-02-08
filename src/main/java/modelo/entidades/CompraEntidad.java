@@ -6,16 +6,16 @@ import modelo.enums.MetodoPagoEnum;
 import java.time.LocalDate;
 
 public class CompraEntidad {
-    private long idCompra;
+    private Long idCompra;
     private UsuarioEntidad usuarioEntidad;
     private JuegoEntidad juego;
     private LocalDate fechaCompra;
     private MetodoPagoEnum metodoPago;
-    private double precio;
-    private int descuento;
+    private Double precio;
+    private Integer descuento;
     private EstadoCompraEnum estado;
 
-    public CompraEntidad(long idCompra, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaCompra, MetodoPagoEnum metodoPago, double precio, int descuento, EstadoCompraEnum estado) {
+    public CompraEntidad(Long idCompra, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaCompra, MetodoPagoEnum metodoPago, Double precio, Integer descuento, EstadoCompraEnum estado) {
         this.idCompra = idCompra;
         this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;
@@ -26,11 +26,11 @@ public class CompraEntidad {
         this.estado = estado;
     }
 
-    public long getIdCompra() {
+    public Long getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(long idCompra) {
+    public void setIdCompra(Long idCompra) {
         this.idCompra = idCompra;
     }
 
@@ -66,19 +66,19 @@ public class CompraEntidad {
         this.metodoPago = metodoPago;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
-    public int getDescuento() {
+    public Integer getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(int descuento) {
+    public void setDescuento(Integer descuento) {
         this.descuento = descuento;
     }
 

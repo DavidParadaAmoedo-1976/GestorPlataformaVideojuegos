@@ -9,16 +9,16 @@ public class BibliotecaEntidad {
     private UsuarioEntidad usuario = new UsuarioEntidad();
     private JuegoEntidad juego = new JuegoEntidad();
 
-    private long idBiblioteca;
-    private long idUsuario;
-    private long idJuego;
+    private Long idBiblioteca;
+    private Long idUsuario;
+    private Long idJuego;
     private LocalDate fechaAdquisicion;
-    private int horasDeJuego;
+    private Integer horasDeJuego;
     private LocalDate ultimaFechaDeJuego;
     private boolean estadoInstalacion;
 
 
-    public BibliotecaEntidad(long idBiblioteca, long idUsuario, long idJuego, LocalDate fechaAdquisicion, int horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
+    public BibliotecaEntidad(Long idBiblioteca, Long idUsuario, Long idJuego, LocalDate fechaAdquisicion, Integer horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
         this.idBiblioteca = idBiblioteca;
         this.idUsuario = idUsuario;
         this.idJuego = idJuego;
@@ -28,29 +28,27 @@ public class BibliotecaEntidad {
         this.estadoInstalacion = estadoInstalacion;
     }
 
-    public long getIdBiblioteca() {
+    public Long getIdBiblioteca() {
         return idBiblioteca;
     }
 
-    public void setIdBiblioteca(long idBiblioteca) {
+    public void setIdBiblioteca(Long idBiblioteca) {
         this.idBiblioteca = idBiblioteca;
     }
 
-
-
-    public long getUsuario() {
+    public Long getUsuario() {
         return idUsuario;
     }
 
-    public void setUsuario(long idUsuario) {
+    public void setUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public long getJuego() {
+    public Long getJuego() {
         return idJuego;
     }
 
-    public void setJuego(long juego) {
+    public void setJuego(Long juego) {
         this.idJuego = juego;
     }
 
@@ -62,11 +60,11 @@ public class BibliotecaEntidad {
         this.fechaAdquisicion = fechaAdquisicion;
     }
 
-    public int getHorasDeJuego() {
+    public Integer getHorasDeJuego() {
         return horasDeJuego;
     }
 
-    public void setHorasDeJuego(int horasDeJuego) {
+    public void setHorasDeJuego(Integer horasDeJuego) {
         this.horasDeJuego = horasDeJuego;
     }
 

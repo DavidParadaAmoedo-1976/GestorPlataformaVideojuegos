@@ -6,7 +6,7 @@ import modelo.enums.PaisEnum;
 import java.time.LocalDate;
 
 public class UsuarioDto {
-    private long idUsuario;
+    private Long idUsuario;
     private String nombreUsuario;
     private String email;
     private String password;
@@ -15,10 +15,10 @@ public class UsuarioDto {
     private LocalDate fechaNacimiento;
     private LocalDate fechaRegistro;
     private String avatar;
-    private double saldo;
+    private Double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioDto(long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioDto(Long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
@@ -32,11 +32,11 @@ public class UsuarioDto {
         this.estadoCuenta = estadoCuenta;
     }
 
-    public long getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -100,11 +100,11 @@ public class UsuarioDto {
         this.avatar = avatar;
     }
 
-    public double getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
 

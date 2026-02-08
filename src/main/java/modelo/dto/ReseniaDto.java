@@ -6,16 +6,16 @@ import modelo.entidades.UsuarioEntidad;
 import java.time.LocalDate;
 
 public class ReseniaDto {
-    private long idReseña;
+    private Long idReseña;
     private UsuarioEntidad usuarioEntidad;
     private JuegoEntidad juego;
     private boolean recomendado;
     private String textoReseña;
-    private int cantidadHorasJugadas;
+    private Integer cantidadHorasJugadas;
     private LocalDate fechaPublicacion;
-    private int estadoPublicacion;
+    private Integer estadoPublicacion;
 
-    public ReseniaDto(long idReseña, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, boolean recomendado, String textoReseña, int cantidadHorasJugadas, LocalDate fechaPublicacion, int estadoPublicacion) {
+    public ReseniaDto(Long idReseña, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, boolean recomendado, String textoReseña, Integer cantidadHorasJugadas, LocalDate fechaPublicacion, Integer estadoPublicacion) {
         this.idReseña = idReseña;
         this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;
@@ -26,11 +26,11 @@ public class ReseniaDto {
         this.estadoPublicacion = estadoPublicacion;
     }
 
-    public long getIdReseña() {
+    public Long getIdReseña() {
         return idReseña;
     }
 
-    public void setIdReseña(long idReseña) {
+    public void setIdReseña(Long idReseña) {
         this.idReseña = idReseña;
     }
 
@@ -66,11 +66,11 @@ public class ReseniaDto {
         this.textoReseña = textoReseña;
     }
 
-    public int getCantidadHorasJugadas() {
+    public Integer getCantidadHorasJugadas() {
         return cantidadHorasJugadas;
     }
 
-    public void setCantidadHorasJugadas(int cantidadHorasJugadas) {
+    public void setCantidadHorasJugadas(Integer cantidadHorasJugadas) {
         this.cantidadHorasJugadas = cantidadHorasJugadas;
     }
 
@@ -82,11 +82,11 @@ public class ReseniaDto {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public int getEstadoPublicacion() {
+    public Integer getEstadoPublicacion() {
         return estadoPublicacion;
     }
 
-    public void setEstadoPublicacion(int estadoPublicacion) {
+    public void setEstadoPublicacion(Integer estadoPublicacion) {
         this.estadoPublicacion = estadoPublicacion;
     }
 }

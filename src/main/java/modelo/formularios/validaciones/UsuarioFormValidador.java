@@ -4,6 +4,8 @@ import excepciones.ValidationException;
 import modelo.enums.PaisEnum;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
+import repositorio.implementacionMemoria.UsuarioRepo;
+import repositorio.interfaces.IUsuarioRepo;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -13,13 +15,13 @@ import java.util.regex.Pattern;
 
 public class UsuarioFormValidador {
 
-    private static final int EDAD_MINIMA = 13;
-    private static final int PASSWORD_MAX = 20;
-    private static final int PASSWORD_MINIMA = 8;
-    private static final int LONGITUD_AVATAR_MAX = 100;
-    private static final int LONGITUD_EMAIL_USUARIO_MAX = 100;
-    private static final int LONGITUD_NOMBRE_REAL_MINIMA = 2;
-    private static final int LONGITUD_NOMBRE_REAL_MAXIMA = 50;
+    private static final Integer EDAD_MINIMA = 13;
+    private static final Integer PASSWORD_MAX = 20;
+    private static final Integer PASSWORD_MINIMA = 8;
+    private static final Integer LONGITUD_AVATAR_MAX = 100;
+    private static final Integer LONGITUD_EMAIL_USUARIO_MAX = 100;
+    private static final Integer LONGITUD_NOMBRE_REAL_MINIMA = 2;
+    private static final Integer LONGITUD_NOMBRE_REAL_MAXIMA = 50;
     private static final Pattern USERNAME_PATTERN =
             Pattern.compile("^[A-Za-z_-][A-Za-z0-9_-]{2,19}$");
     private static final Pattern EMAIL_PATTERN =
@@ -31,7 +33,7 @@ public class UsuarioFormValidador {
     private UsuarioFormValidador() {
     }
 
-    public static void validar(UsuarioForm form) throws ValidationException {
+    public static void validarUsuario(UsuarioForm form) throws ValidationException {
 
         List<ErrorModel> errores = new ArrayList<>();
 
@@ -46,19 +48,19 @@ public class UsuarioFormValidador {
 
         // email
         ValidacionesComunes.obligatorio("email", form.getEmail(), errores);
-        ValidacionesComunes.longitudMaxima("email", form.getEmail(),LONGITUD_EMAIL_USUARIO_MAX, errores );
+        ValidacionesComunes.LongitudMaxima("email", form.getEmail(),LONGITUD_EMAIL_USUARIO_MAX, errores );
         validarFormatoEmail(form.getEmail(), errores);
 
         // password
         ValidacionesComunes.obligatorio("password", form.getPassword(), errores);
-        ValidacionesComunes.longitudMinima("password", form.getPassword(),PASSWORD_MINIMA,errores);
-        ValidacionesComunes.longitudMaxima("password", form.getPassword(), PASSWORD_MAX, errores);
+        ValidacionesComunes.LongitudMinima("password", form.getPassword(),PASSWORD_MINIMA,errores);
+        ValidacionesComunes.LongitudMaxima("password", form.getPassword(), PASSWORD_MAX, errores);
         validarFormatoPassword(form.getPassword(), errores);
 
         // nombre real
         ValidacionesComunes.obligatorio("nombreReal", form.getNombreUsuario(), errores);
-        ValidacionesComunes.longitudMinima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MINIMA,errores);
-        ValidacionesComunes.longitudMaxima("nombreReal", form.getNombreReal(),  LONGITUD_NOMBRE_REAL_MAXIMA,errores);
+        ValidacionesComunes.LongitudMinima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MINIMA,errores);
+        ValidacionesComunes.LongitudMaxima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MAXIMA,errores);
 
         // pais
         validarPaisEnLista(form.getPais(),errores);
@@ -67,7 +69,7 @@ public class UsuarioFormValidador {
         validarFechaNacimiento(form.getFechaNacimiento(), errores);
 
         // avatar
-        ValidacionesComunes.longitudMaxima("avatar", form.getAvatar(), LONGITUD_AVATAR_MAX,errores);
+        ValidacionesComunes.LongitudMaxima("avatar", form.getAvatar(), LONGITUD_AVATAR_MAX,errores);
 
         // saldo
         ValidacionesComunes.valorNoNegativo("saldo",form.getSaldo(), errores);
@@ -117,7 +119,7 @@ public class UsuarioFormValidador {
             errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.VALOR_NEGATIVO));
         }
 
-        int edad = Period.between(fecha, LocalDate.now()).getYears();
+        Integer edad = Period.between(fecha, LocalDate.now()).getYears();
         if (edad < EDAD_MINIMA) {
             errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.VALOR_EXCEDIDO));
         }

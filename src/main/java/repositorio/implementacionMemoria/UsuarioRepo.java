@@ -3,7 +3,7 @@ package repositorio.implementacionMemoria;
 import modelo.entidades.UsuarioEntidad;
 import modelo.enums.EstadoCuentaEnum;
 import modelo.formularios.UsuarioForm;
-import repositorio.interfaz.IUsuarioRepo;
+import repositorio.interfaces.IUsuarioRepo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class UsuarioRepo implements IUsuarioRepo {
 
     @Override
     public List<UsuarioEntidad> listarTodos() {
-        return usuariosEntidad;
+        return new ArrayList<>(usuariosEntidad);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class UsuarioRepo implements IUsuarioRepo {
         usuario.setNombreUsuario(form.getNombreUsuario());
         usuario.setEmail(form.getEmail());
         usuario.setNombreReal(form.getNombreReal());
-        usuario.getPais();
+        usuario.setPais(form.getPais());
         usuario.setAvatar(form.getAvatar());
 
         return usuario;
@@ -82,7 +82,7 @@ public class UsuarioRepo implements IUsuarioRepo {
                 .orElse(null);
     }
 
-    private long generarId() {
+    private Long generarId() {
         return usuariosEntidad.stream()
                 .mapToLong(usuario -> usuario.getIdUsuario())
                 .max()

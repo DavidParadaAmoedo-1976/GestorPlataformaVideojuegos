@@ -9,22 +9,22 @@ public class UsuarioMaper {
         // evita instanciar
     }
 
-    public static UsuarioDto entidadADto(UsuarioEntidad entidad) {
+    public static UsuarioDto entidadADto(UsuarioEntidad usuario) {
 
-        if (entidad == null) return null;
+        if (usuario == null) return null;
 
         return new UsuarioDto(
-                entidad.getIdUsuario(),
-                entidad.getNombreUsuario(),
-                entidad.getEmail(),
-                entidad.getPassword(),
-                entidad.getNombreUsuario(),
-                entidad.getPais(),
-                entidad.getFechaNacimiento(),
-                entidad.getFechaRegistro(),
-                entidad.getAvatar(),
-                entidad.getSaldo(),
-                entidad.getEstadoCuenta()
+                usuario.getIdUsuario(),
+                usuario.getNombreUsuario(),
+                usuario.getEmail(),
+                usuario.getPassword(),
+                usuario.getNombreUsuario(),
+                usuario.getPais(),
+                usuario.getFechaNacimiento(),
+                usuario.getFechaRegistro(),
+                usuario.getAvatar(),
+                usuario.getSaldo(),
+                usuario.getEstadoCuenta()
         );
     }
 }

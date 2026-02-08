@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class UsuarioEntidad {
-    private long idUsuario;
+    private Long idUsuario;
     private String nombreUsuario;
     private String email;
     private String password;
@@ -17,10 +17,10 @@ public class UsuarioEntidad {
     private LocalDate fechaNacimiento;
     private LocalDate fechaRegistro;
     private String avatar;
-    private double saldo;
+    private Double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioEntidad(long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioEntidad(Long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
@@ -30,19 +30,18 @@ public class UsuarioEntidad {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
         this.avatar = avatar;
-        this.saldo = 0;
+        this.saldo = 0.0;
         this.estadoCuenta = EstadoCuentaEnum.ACTIVA;
     }
 
     public UsuarioEntidad() {
-
     }
 
-    public long getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -106,11 +105,11 @@ public class UsuarioEntidad {
         this.avatar = avatar;
     }
 
-    public double getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(Double saldo) {
         if (saldo < 0) {
             throw new IllegalArgumentException("El saldo no puede ser negativo");
         }

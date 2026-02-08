@@ -1,21 +1,24 @@
 package modelo.dto;
 
+import modelo.enums.ClasificacionJuegoEnum;
+import modelo.enums.EstadoJuegoEnum;
+
 import java.time.LocalDate;
 
 public class JuegoDto {
-    private long idJuego;
-    private int titulo;
+    private Long idJuego;
+    private String titulo;
     private String descripcion;
     private String desarrollador;
     private LocalDate fechaLanzamiento;
-    private double precioBase;
-    private int descuento;
+    private Double precioBase;
+    private Integer descuento;
     private String categoria;
-    private int clasificacionPorEdad;
+    private ClasificacionJuegoEnum clasificacionPorEdad;
     private String[] idiomas;
-    private int estado;
+    private EstadoJuegoEnum estado;
 
-    public JuegoDto(long idJuego, int titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, double precioBase, int descuento, String categoria, int clasificacionPorEdad, String[] idiomas, int estado) {
+    public JuegoDto(Long idJuego, String titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, Double precioBase, Integer descuento, String categoria, ClasificacionJuegoEnum clasificacionPorEdad, String[] idiomas, EstadoJuegoEnum estado) {
         this.idJuego = idJuego;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -29,19 +32,19 @@ public class JuegoDto {
         this.estado = estado;
     }
 
-    public long getIdJuego() {
+    public Long getIdJuego() {
         return idJuego;
     }
 
-    public void setIdJuego(long idJuego) {
+    public void setIdJuego(Long idJuego) {
         this.idJuego = idJuego;
     }
 
-    public int getTitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(int titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
@@ -69,19 +72,19 @@ public class JuegoDto {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
-    public double getPrecioBase() {
+    public Double getPrecioBase() {
         return precioBase;
     }
 
-    public void setPrecioBase(double precioBase) {
+    public void setPrecioBase(Double precioBase) {
         this.precioBase = precioBase;
     }
 
-    public int getDescuento() {
+    public Integer getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(int descuento) {
+    public void setDescuento(Integer descuento) {
         this.descuento = descuento;
     }
 
@@ -93,11 +96,11 @@ public class JuegoDto {
         this.categoria = categoria;
     }
 
-    public int getClasificacionPorEdad() {
+    public ClasificacionJuegoEnum getClasificacionPorEdad() {
         return clasificacionPorEdad;
     }
 
-    public void setClasificacionPorEdad(int clasificacionPorEdad) {
+    public void setClasificacionPorEdad(ClasificacionJuegoEnum clasificacionPorEdad) {
         this.clasificacionPorEdad = clasificacionPorEdad;
     }
 
@@ -109,11 +112,11 @@ public class JuegoDto {
         this.idiomas = idiomas;
     }
 
-    public int getEstado() {
+    public EstadoJuegoEnum getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(EstadoJuegoEnum estado) {
         this.estado = estado;
     }
 }

@@ -2,11 +2,10 @@ package repositorio.implementacionMemoria;
 
 import modelo.entidades.BibliotecaEntidad;
 import modelo.formularios.BibliotecaForm;
-import repositorio.interfaz.IBibliotecaRepo;
+import repositorio.interfaces.IBibliotecaRepo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class BibliotecaRepo implements IBibliotecaRepo<BibliotecaEntidad, BibliotecaForm, Long> {
     private final List<BibliotecaEntidad> listaBibliotecas = new ArrayList<>();
@@ -36,7 +35,7 @@ public class BibliotecaRepo implements IBibliotecaRepo<BibliotecaEntidad, Biblio
         return false;
     }
 
-    private long generarId() {
+    private Long generarId() {
         return listaBibliotecas.stream()
                 .mapToLong(biblioteca -> biblioteca.getIdBiblioteca())
                 .max()

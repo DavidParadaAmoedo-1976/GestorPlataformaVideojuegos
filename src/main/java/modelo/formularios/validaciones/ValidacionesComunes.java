@@ -15,19 +15,19 @@ public class ValidacionesComunes {
         }
     }
 
-    public static void longitudMaxima(String campo, String valor, int max, List<ErrorModel> errores) {
+    public static void LongitudMaxima(String campo, String valor, Integer max, List<ErrorModel> errores) {
         if (valor != null && valor.length() > max) {
             errores.add(new ErrorModel(campo, TipoErrorEnum.LONGITUD_EXCEDIDA));
         }
     }
 
-    public static void longitudMinima(String campo, String valor, int min, List<ErrorModel> errores) {
+    public static void LongitudMinima(String campo, String valor, Integer min, List<ErrorModel> errores) {
         if (valor != null && valor.length() < min) {
             errores.add(new ErrorModel(campo, TipoErrorEnum.RANGO_INVALIDO));
         }
     }
 
-    public static void valorNoNegativo(String campo, double valor, List<ErrorModel> errores) {
+    public static void valorNoNegativo(String campo, Double valor, List<ErrorModel> errores) {
         if (valor < 0) {
             errores.add(new ErrorModel(campo, TipoErrorEnum.VALOR_NEGATIVO));
         }

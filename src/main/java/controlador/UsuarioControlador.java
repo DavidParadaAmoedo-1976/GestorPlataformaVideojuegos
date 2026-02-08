@@ -8,7 +8,7 @@ import modelo.formularios.validaciones.ErrorModel;
 import modelo.formularios.validaciones.UsuarioFormValidador;
 import excepciones.ValidationException;
 import modelo.maper.UsuarioMaper;
-import repositorio.interfaz.IUsuarioRepo;
+import repositorio.interfaces.IUsuarioRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class UsuarioControlador {
     // Crear usuario
     public UsuarioDto crearUsuario(UsuarioForm form) throws ValidationException {
 
-        UsuarioFormValidador.validar(form);
+        UsuarioFormValidador.validarUsuario(form);
 
         List<ErrorModel> errores = new ArrayList<>();
 
@@ -44,7 +44,7 @@ public class UsuarioControlador {
     }
 
     // Buscar por id
-    public UsuarioDto buscarUsuarioPorId(long id) {
+    public UsuarioDto buscarUsuarioPorId(Long id) {
 
         UsuarioEntidad entidad = usuarioRepo.buscarPorId(id);
         return UsuarioMaper.entidadADto(entidad);
@@ -60,14 +60,14 @@ public class UsuarioControlador {
     }
 
     // Actualizar usuario
-    public UsuarioDto actualizarUsuario(long id, UsuarioForm form) {
+    public UsuarioDto actualizarUsuario(Long id, UsuarioForm form) {
 
         UsuarioEntidad entidad = usuarioRepo.actualizar(id, form);
         return UsuarioMaper.entidadADto(entidad);
     }
 
     // Eliminar usuario
-    public boolean eliminarUsuario(long id) {
+    public boolean eliminarUsuario(Long id) {
         return usuarioRepo.eliminar(id);
     }
 }

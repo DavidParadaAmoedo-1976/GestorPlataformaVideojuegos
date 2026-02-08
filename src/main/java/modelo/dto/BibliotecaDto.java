@@ -6,15 +6,15 @@ import modelo.entidades.UsuarioEntidad;
 import java.time.LocalDate;
 
 public class BibliotecaDto {
-    private long idBiblioteca;
+    private Long idBiblioteca;
     private UsuarioEntidad usuarioEntidad;
     private JuegoEntidad juego;
     private LocalDate fechaAdquisicion;
-    private int horasDeJuego;
+    private Integer horasDeJuego;
     private LocalDate ultimaFechaDeJuego;
     private boolean estadoInstalacion;
 
-    public BibliotecaDto(long idBiblioteca, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaAdquisicion, int horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
+    public BibliotecaDto(Long idBiblioteca, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaAdquisicion, Integer horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
         this.idBiblioteca = idBiblioteca;
         this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;
@@ -24,11 +24,11 @@ public class BibliotecaDto {
         this.estadoInstalacion = estadoInstalacion;
     }
 
-    public long getIdBiblioteca() {
+    public Long getIdBiblioteca() {
         return idBiblioteca;
     }
 
-    public void setIdBiblioteca(long idBiblioteca) {
+    public void setIdBiblioteca(Long idBiblioteca) {
         this.idBiblioteca = idBiblioteca;
     }
 
@@ -56,11 +56,11 @@ public class BibliotecaDto {
         this.fechaAdquisicion = fechaAdquisicion;
     }
 
-    public int getHorasDeJuego() {
+    public Integer getHorasDeJuego() {
         return horasDeJuego;
     }
 
-    public void setHorasDeJuego(int horasDeJuego) {
+    public void setHorasDeJuego(Integer horasDeJuego) {
         this.horasDeJuego = horasDeJuego;
     }
 

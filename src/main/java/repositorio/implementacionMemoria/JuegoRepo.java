@@ -2,7 +2,7 @@ package repositorio.implementacionMemoria;
 
 import modelo.entidades.JuegoEntidad;
 import modelo.formularios.JuegoForm;
-import repositorio.interfaz.IJuegoRepo;
+import repositorio.interfaces.IJuegoRepo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class JuegoRepo implements IJuegoRepo {
     private final List<JuegoEntidad> juegoEntidades=new ArrayList<>();
 
 
-    private long generarId() {
+    private Long generarId() {
         return juegoEntidades.stream()
                 .mapToLong(juego -> juego.getIdJuego())
                 .max()
