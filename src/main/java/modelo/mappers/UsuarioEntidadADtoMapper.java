@@ -1,24 +1,25 @@
-package modelo.maper;
+package modelo.mappers;
 
 import modelo.dto.UsuarioDto;
 import modelo.entidades.UsuarioEntidad;
 
-public class UsuarioMaper {
+public class UsuarioEntidadADtoMapper {
 
-    private UsuarioMaper() {
+    private UsuarioEntidadADtoMapper() {
         // evita instanciar
     }
 
-    public static UsuarioDto entidadADto(UsuarioEntidad usuario) {
+    public static UsuarioDto usuarioEntidadADto(UsuarioEntidad usuario) {
 
         if (usuario == null) return null;
 
         return new UsuarioDto(
+
                 usuario.getIdUsuario(),
                 usuario.getNombreUsuario(),
                 usuario.getEmail(),
                 usuario.getPassword(),
-                usuario.getNombreUsuario(),
+                usuario.getNombreReal(),
                 usuario.getPais(),
                 usuario.getFechaNacimiento(),
                 usuario.getFechaRegistro(),

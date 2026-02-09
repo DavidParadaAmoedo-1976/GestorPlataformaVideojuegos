@@ -2,6 +2,7 @@ package modelo.formularios.validaciones;
 
 import modelo.enums.TipoErrorEnum;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ValidacionesComunes {
@@ -33,6 +34,22 @@ public class ValidacionesComunes {
         }
     }
 
+    public static void valorFueraDeRango(String campo, Number valor, Double min, Double max, List<ErrorModel> errores) {
+        if (valor == null) {
+            return;
+        }
+        Double v = valor.doubleValue();
+        if (v < min || v > max) {
+            errores.add(new ErrorModel(campo, TipoErrorEnum.RANGO_INVALIDO));
+        }
+    }
 
+    public static void maxDosDecimales(String campo, Double valor, List<ErrorModel> errores) {
+        if (valor == null) return;
+
+        if (BigDecimal.valueOf(valor).scale() > 2) {
+            errores.add(new ErrorModel(campo, TipoErrorEnum.FORMATO_INVALIDO));
+        }
+    }
 }
 

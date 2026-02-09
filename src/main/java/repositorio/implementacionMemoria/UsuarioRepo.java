@@ -1,11 +1,10 @@
 package repositorio.implementacionMemoria;
 
 import modelo.entidades.UsuarioEntidad;
-import modelo.enums.EstadoCuentaEnum;
 import modelo.formularios.UsuarioForm;
+import modelo.mappers.UsuarioFormularioAEntidadMapper;
 import repositorio.interfaces.IUsuarioRepo;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,22 +12,16 @@ public class UsuarioRepo implements IUsuarioRepo {
 
     private final List<UsuarioEntidad> usuariosEntidad = new ArrayList<>();
 
+    private Long generarId() {
+        return usuariosEntidad.stream()
+                .mapToLong(usuario -> usuario.getIdUsuario())
+                .max()
+                .orElse(0L) + 1;
+    }
+
     @Override
     public UsuarioEntidad crear(UsuarioForm form) {
-
-        UsuarioEntidad usuario = new UsuarioEntidad(
-                generarId(),
-                form.getNombreUsuario(),
-                form.getEmail(),
-                form.getPassword(),
-                form.getNombreReal(),
-                form.getPais(),
-                form.getFechaNacimiento(),
-                LocalDate.now(),
-                form.getAvatar(),
-                0.0,
-                EstadoCuentaEnum.ACTIVA
-        );
+        UsuarioEntidad usuario = UsuarioFormularioAEntidadMapper.crearEntidad(generarId(), form);
 
         usuariosEntidad.add(usuario);
         return usuario;
@@ -52,17 +45,14 @@ public class UsuarioRepo implements IUsuarioRepo {
         UsuarioEntidad usuario = buscarPorId(id);
         if (usuario == null) return null;
 
-        usuario.setNombreUsuario(form.getNombreUsuario());
-        usuario.setEmail(form.getEmail());
-        usuario.setNombreReal(form.getNombreReal());
-        usuario.setPais(form.getPais());
-        usuario.setAvatar(form.getAvatar());
-
+        UsuarioFormularioAEntidadMapper.actualizarEntidad(usuario, form);
         return usuario;
     }
 
     @Override
     public boolean eliminar(Long id) {
+        UsuarioEntidad usuario = buscarPorId(id);
+        System.out.println(usuario.getNombreUsuario() + " eliminado"); // mensaje provisional a falta de vista.
         return usuariosEntidad.removeIf(u -> u.getIdUsuario() == id);
     }
 
@@ -80,12 +70,5 @@ public class UsuarioRepo implements IUsuarioRepo {
                 .filter(u -> u.getNombreUsuario().equalsIgnoreCase(nombreUsuario))
                 .findFirst()
                 .orElse(null);
-    }
-
-    private Long generarId() {
-        return usuariosEntidad.stream()
-                .mapToLong(usuario -> usuario.getIdUsuario())
-                .max()
-                .orElse(0L) + 1;
     }
 }

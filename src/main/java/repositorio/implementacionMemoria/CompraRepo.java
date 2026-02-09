@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CompraRepo implements ICompraRepo {
 
-    private final List<CompraEntidad>  compraEntidad = new ArrayList<>();
+    private final List<CompraEntidad> compraEntidad = new ArrayList<>();
 
 
     private Long generarId() {

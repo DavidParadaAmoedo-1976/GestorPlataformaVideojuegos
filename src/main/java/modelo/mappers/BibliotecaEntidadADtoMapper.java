@@ -1,12 +1,11 @@
-package modelo.maper;
+package modelo.mappers;
 
 import modelo.dto.BibliotecaDto;
-
 import modelo.entidades.BibliotecaEntidad;
 
-public class BibliotecaMaper {
+public class BibliotecaEntidadADtoMapper {
 
-    public BibliotecaMaper() {
+    public BibliotecaEntidadADtoMapper() {
     }
 
     public static BibliotecaDto entidadADto(BibliotecaEntidad biblioteca) {

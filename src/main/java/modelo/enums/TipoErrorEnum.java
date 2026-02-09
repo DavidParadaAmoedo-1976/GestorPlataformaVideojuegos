@@ -8,8 +8,8 @@ public enum TipoErrorEnum {
     LONGITUD_EXCEDIDA("Longitud excedida"),
     VALOR_EXCEDIDO("Valor excedido"),
     RANGO_INVALIDO("Fuera de rango"),
-    OTRO("Otro"),
-    DUPLICADO("Duplicado");
+    DUPLICADO("Duplicado"),
+    OTRO("Otro");
 
     private final String descripcion;
 

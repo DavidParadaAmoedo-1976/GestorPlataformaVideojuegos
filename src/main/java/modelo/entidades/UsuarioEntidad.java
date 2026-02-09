@@ -20,7 +20,7 @@ public class UsuarioEntidad {
     private Double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioEntidad(Long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioEntidad(Long idUsuario, String nombreUsuario, String email, String password, String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;

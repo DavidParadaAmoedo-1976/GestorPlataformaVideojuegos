@@ -9,12 +9,12 @@ import java.util.List;
 
 public class ReseniaRepo implements IReseniaRepo {
 
-    private final List<ReseniaEntidad>  reseniasEntidades = new ArrayList<>();
+    private final List<ReseniaEntidad> reseniasEntidades = new ArrayList<>();
 
 
     private Long generarId() {
         return reseniasEntidades.stream()
-                .mapToLong(resenia-> resenia.getIdReseña())
+                .mapToLong(resenia -> resenia.getIdReseña())
                 .max()
                 .orElse(0L) + 1;
     }

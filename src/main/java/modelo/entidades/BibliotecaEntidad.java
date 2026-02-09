@@ -1,13 +1,11 @@
 package modelo.entidades;
 
-import modelo.enums.ClasificacionJuegoEnum;
-
 import java.time.LocalDate;
 
 
 public class BibliotecaEntidad {
-    private UsuarioEntidad usuario = new UsuarioEntidad();
-    private JuegoEntidad juego = new JuegoEntidad();
+    private final UsuarioEntidad usuario = new UsuarioEntidad();
+    private final JuegoEntidad juego = new JuegoEntidad();
 
     private Long idBiblioteca;
     private Long idUsuario;

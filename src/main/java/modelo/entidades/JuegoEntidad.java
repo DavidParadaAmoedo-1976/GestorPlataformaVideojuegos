@@ -35,7 +35,6 @@ public class JuegoEntidad {
     }
 
     public JuegoEntidad() {
-
     }
 
     public Long getIdJuego() {

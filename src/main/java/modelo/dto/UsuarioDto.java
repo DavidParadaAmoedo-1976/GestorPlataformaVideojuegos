@@ -13,12 +13,12 @@ public class UsuarioDto {
     private String nombreReal;
     private PaisEnum pais;
     private LocalDate fechaNacimiento;
-    private LocalDate fechaRegistro;
+    private final LocalDate fechaRegistro;
     private String avatar;
     private Double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioDto(Long idUsuario, String nombreUsuario, String email, String password,String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioDto(Long idUsuario, String nombreUsuario, String email, String password, String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;

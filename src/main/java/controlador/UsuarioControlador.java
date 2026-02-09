@@ -1,13 +1,13 @@
 package controlador;
 
+import excepciones.ValidationException;
 import modelo.dto.UsuarioDto;
 import modelo.entidades.UsuarioEntidad;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
 import modelo.formularios.validaciones.ErrorModel;
 import modelo.formularios.validaciones.UsuarioFormValidador;
-import excepciones.ValidationException;
-import modelo.maper.UsuarioMaper;
+import modelo.mappers.UsuarioEntidadADtoMapper;
 import repositorio.interfaces.IUsuarioRepo;
 
 import java.util.ArrayList;
@@ -40,14 +40,14 @@ public class UsuarioControlador {
         if (!errores.isEmpty()) {
             throw new ValidationException(errores);
         }
-        return UsuarioMaper.entidadADto(usuarioRepo.crear(form));
+        return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuarioRepo.crear(form));
     }
 
     // Buscar por id
     public UsuarioDto buscarUsuarioPorId(Long id) {
 
         UsuarioEntidad entidad = usuarioRepo.buscarPorId(id);
-        return UsuarioMaper.entidadADto(entidad);
+        return UsuarioEntidadADtoMapper.usuarioEntidadADto(entidad);
     }
 
     // Listar todos
@@ -55,7 +55,7 @@ public class UsuarioControlador {
 
         return usuarioRepo.listarTodos()
                 .stream()
-                .map(UsuarioMaper::entidadADto)
+                .map(UsuarioEntidadADtoMapper::usuarioEntidadADto)
                 .collect(Collectors.toList());
     }
 
@@ -63,7 +63,7 @@ public class UsuarioControlador {
     public UsuarioDto actualizarUsuario(Long id, UsuarioForm form) {
 
         UsuarioEntidad entidad = usuarioRepo.actualizar(id, form);
-        return UsuarioMaper.entidadADto(entidad);
+        return UsuarioEntidadADtoMapper.usuarioEntidadADto(entidad);
     }
 
     // Eliminar usuario

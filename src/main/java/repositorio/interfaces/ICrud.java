@@ -2,7 +2,7 @@ package repositorio.interfaces;
 
 import java.util.List;
 
-public interface ICrud <E, F, I>{
+public interface ICrud<E, F, I> {
 
 
     // Crear

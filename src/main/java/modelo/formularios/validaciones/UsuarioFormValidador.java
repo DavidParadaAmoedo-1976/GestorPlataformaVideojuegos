@@ -4,8 +4,6 @@ import excepciones.ValidationException;
 import modelo.enums.PaisEnum;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
-import repositorio.implementacionMemoria.UsuarioRepo;
-import repositorio.interfaces.IUsuarioRepo;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -42,37 +40,38 @@ public class UsuarioFormValidador {
             throw new ValidationException(errores);
         }
 
-        // nombreUsuario
+        // NombreUsuario
         ValidacionesComunes.obligatorio("nombreUsuario", form.getNombreUsuario(), errores);
         validarNombreUsuario(form.getNombreUsuario(), errores);
 
-        // email
+        // Email
         ValidacionesComunes.obligatorio("email", form.getEmail(), errores);
-        ValidacionesComunes.LongitudMaxima("email", form.getEmail(),LONGITUD_EMAIL_USUARIO_MAX, errores );
+        ValidacionesComunes.LongitudMaxima("email", form.getEmail(), LONGITUD_EMAIL_USUARIO_MAX, errores);
         validarFormatoEmail(form.getEmail(), errores);
 
-        // password
+        // Password
         ValidacionesComunes.obligatorio("password", form.getPassword(), errores);
-        ValidacionesComunes.LongitudMinima("password", form.getPassword(),PASSWORD_MINIMA,errores);
+        ValidacionesComunes.LongitudMinima("password", form.getPassword(), PASSWORD_MINIMA, errores);
         ValidacionesComunes.LongitudMaxima("password", form.getPassword(), PASSWORD_MAX, errores);
         validarFormatoPassword(form.getPassword(), errores);
 
-        // nombre real
+        // Nombre real
         ValidacionesComunes.obligatorio("nombreReal", form.getNombreUsuario(), errores);
-        ValidacionesComunes.LongitudMinima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MINIMA,errores);
-        ValidacionesComunes.LongitudMaxima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MAXIMA,errores);
+        ValidacionesComunes.LongitudMinima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MINIMA, errores);
+        ValidacionesComunes.LongitudMaxima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MAXIMA, errores);
 
-        // pais
-        validarPaisEnLista(form.getPais(),errores);
+        // Pais
+        validarPaisEnLista(form.getPais(), errores);
 
-        // fechaNacimiento
+        // FechaNacimiento
         validarFechaNacimiento(form.getFechaNacimiento(), errores);
 
-        // avatar
-        ValidacionesComunes.LongitudMaxima("avatar", form.getAvatar(), LONGITUD_AVATAR_MAX,errores);
+        // Avatar
+        ValidacionesComunes.LongitudMaxima("avatar", form.getAvatar(), LONGITUD_AVATAR_MAX, errores);
 
-        // saldo
-        ValidacionesComunes.valorNoNegativo("saldo",form.getSaldo(), errores);
+        // Saldo
+        ValidacionesComunes.valorNoNegativo("saldo", form.getSaldo(), errores);
+        ValidacionesComunes.maxDosDecimales("saldo", form.getSaldo(), errores);
 
 
         if (!errores.isEmpty()) {

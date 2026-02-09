@@ -31,6 +31,10 @@ public class JuegoForm {
         this.estado = estado;
     }
 
+    public JuegoForm() {
+
+    }
+
     public String getTitulo() {
         return titulo;
     }

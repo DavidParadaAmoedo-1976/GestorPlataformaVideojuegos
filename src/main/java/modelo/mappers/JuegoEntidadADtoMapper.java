@@ -1,13 +1,14 @@
-package modelo.maper;
+package modelo.mappers;
 
 import modelo.dto.JuegoDto;
 import modelo.entidades.JuegoEntidad;
 
-public class JuegoMaper {
-    private JuegoMaper() {
+public class JuegoEntidadADtoMapper {
+
+    private JuegoEntidadADtoMapper() {
     }
 
-    public static JuegoDto juegoDto(JuegoEntidad juego) {
+    public static JuegoDto juegoEntidadADto(JuegoEntidad juego) {
 
         if (juego == null) return null;
 
@@ -26,3 +27,4 @@ public class JuegoMaper {
         );
     }
 }
+
