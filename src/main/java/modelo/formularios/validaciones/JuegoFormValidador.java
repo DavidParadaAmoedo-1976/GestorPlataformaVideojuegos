@@ -5,13 +5,14 @@ import modelo.enums.ClasificacionJuegoEnum;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.JuegoForm;
 import repositorio.implementacionMemoria.JuegoRepo;
+import repositorio.interfaces.IJuegoRepo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JuegoFormValidador {
-
+    private static IJuegoRepo juegoRepo;
 
     private JuegoFormValidador() {
     }
@@ -93,12 +94,18 @@ public class JuegoFormValidador {
         }
     }
 
-    private static void validarTituloUnico(String titulo, List<ErrorModel> errores) {
-        JuegoRepo juegoRepo = new JuegoRepo();
+    private static void validarTituloUnico(String titulo,
+                                           List<ErrorModel> errores) {
+
+        if (titulo == null || juegoRepo == null) return;
 
         if (juegoRepo.buscarPorTitulo(titulo) != null) {
             errores.add(new ErrorModel("titulo", TipoErrorEnum.DUPLICADO));
         }
+    }
+
+    public static void setJuegoRepo(IJuegoRepo repo) {
+        juegoRepo = repo;
     }
 }
 

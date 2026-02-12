@@ -44,6 +44,5 @@ public class JuegoFormularioAEntidadMapper {
             juegoEntidad.setEstado(form.getEstado());
         }
     }
-
 }
 

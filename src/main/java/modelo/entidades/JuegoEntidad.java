@@ -20,22 +20,42 @@ public class JuegoEntidad {
     private String[] idiomas;
     private EstadoJuegoEnum estado;
 
-    public JuegoEntidad(Long idJuego, String titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, Double precioBase, Integer descuento, String categoria, ClasificacionJuegoEnum clasificacionPorEdad, String[] idiomas, EstadoJuegoEnum estado) {
+    public JuegoEntidad(Long idJuego, String titulo, String descripcion,
+                        String desarrollador, LocalDate fechaLanzamiento,
+                        Double precioBase, Integer descuento,
+                        String categoria, ClasificacionJuegoEnum clasificacionPorEdad,
+                        String[] idiomas, EstadoJuegoEnum estado) {
+
         this.idJuego = idJuego;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.desarrollador = desarrollador;
         this.fechaLanzamiento = fechaLanzamiento;
-        this.precioBase = precioBase;
-        this.descuento = 0;
+
+        setPrecioBase(precioBase);
+
+        this.descuento = descuento != null ? descuento : 0;
         this.categoria = categoria;
         this.clasificacionPorEdad = clasificacionPorEdad;
         this.idiomas = idiomas;
-        this.estado = EstadoJuegoEnum.DISPONIBLE;
+        this.estado = estado != null ? estado : EstadoJuegoEnum.DISPONIBLE;
     }
 
     public JuegoEntidad() {
     }
+
+    public Double calcularPrecioFinal() {
+
+        if (descuento == null || descuento == 0) {
+            return precioBase;
+        }
+        double precioFinalTodosDecimales =
+                precioBase - (precioBase * descuento / 100.0);
+        BigDecimal precioFinal = BigDecimal.valueOf(precioFinalTodosDecimales)
+                .setScale(2, RoundingMode.HALF_UP);
+        return precioFinal.doubleValue();
+    }
+
 
     public Long getIdJuego() {
         return idJuego;

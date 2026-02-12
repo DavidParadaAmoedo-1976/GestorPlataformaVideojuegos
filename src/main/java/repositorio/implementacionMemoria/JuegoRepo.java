@@ -1,6 +1,8 @@
 package repositorio.implementacionMemoria;
 
 import modelo.entidades.JuegoEntidad;
+import modelo.enums.ClasificacionJuegoEnum;
+import modelo.enums.EstadoJuegoEnum;
 import modelo.formularios.JuegoForm;
 import modelo.mappers.JuegoFormularioAEntidadMapper;
 import repositorio.interfaces.IJuegoRepo;
@@ -19,41 +21,39 @@ public class JuegoRepo implements IJuegoRepo {
                 .orElse(0L) + 1;
     }
 
-    @Override
-    public JuegoEntidad buscarPorTitulo(String titulo) {
-        return juegosEntidad.stream()
-                .filter(j -> j.getTitulo().equalsIgnoreCase(titulo))
-                .findFirst()
-                .orElse(null);
-    }
-
-    @Override
-    public List<JuegoEntidad> buscarPorCategoria(String categoria) {
-        if (categoria == null) return List.of();
+    public List<JuegoEntidad> buscarConFiltros(
+            String titulo,
+            String categoria,
+            Double precioMin,
+            Double precioMax,
+            ClasificacionJuegoEnum clasificacion,
+            EstadoJuegoEnum estado
+    ) {
 
         return juegosEntidad.stream()
-                .filter(j -> j.getCategoria() != null)
-                .filter(j -> j.getCategoria().equalsIgnoreCase(categoria))
+
+                .filter(j -> titulo == null ||
+                        j.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
+
+                .filter(j -> categoria == null ||
+                        j.getCategoria().equalsIgnoreCase(categoria))
+
+                .filter(j -> precioMin == null ||
+                        j.getPrecioBase() >= precioMin)
+
+                .filter(j -> precioMax == null ||
+                        j.getPrecioBase() <= precioMax)
+
+                .filter(j -> clasificacion == null ||
+                        j.getClasificacionPorEdad() == clasificacion)
+
+                .filter(j -> estado == null ||
+                        j.getEstado() == estado)
+
                 .toList();
     }
 
 
-    @Override
-    public List<JuegoEntidad> buscarPorPrecio(Double precioMin, Double precioMax) {
-        if (precioMin == null) precioMin = 0.0;
-        precioMax = juegosEntidad.stream()
-                .map(juego -> juego.getPrecioBase())
-                .max((precio1, precio2) -> precio1.compareTo(precio2))
-                .orElse(0.0);
-
-        Double finalPrecioMin = precioMin;
-        Double finalPrecioMax = precioMax;
-        return juegosEntidad.stream()
-                .filter(j -> j.getPrecioBase() >= finalPrecioMin)
-                .filter(j -> j.getPrecioBase() <= finalPrecioMax)
-                .toList();
-
-    }
 
     @Override
     public JuegoEntidad crear(JuegoForm form) {
@@ -67,7 +67,8 @@ public class JuegoRepo implements IJuegoRepo {
     @Override
     public JuegoEntidad buscarPorId(Long id) {
         return juegosEntidad.stream()
-                .filter(j -> j.getIdJuego() == id)
+                .filter(j -> j.getIdJuego().equals(id))
+
                 .findFirst()
                 .orElse(null);
     }
@@ -89,8 +90,12 @@ public class JuegoRepo implements IJuegoRepo {
     @Override
     public boolean eliminar(Long id) {
         JuegoEntidad juegoEntidad = buscarPorId(id);
-        System.out.println(juegoEntidad.getTitulo() + " eliminado"); // mensaje provisional a falta de vista.
-        return juegosEntidad.removeIf(u -> u.getIdJuego() == id);
+        if (juegoEntidad == null) {
+            return false;
+        }
+        System.out.println(juegoEntidad.getTitulo() + " eliminado");
+        return juegosEntidad.removeIf(u -> u.getIdJuego().equals(id));
     }
+
 }
 
