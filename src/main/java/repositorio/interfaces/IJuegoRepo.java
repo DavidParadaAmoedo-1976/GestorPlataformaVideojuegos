@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface IJuegoRepo extends ICrud<JuegoEntidad, JuegoForm, Long> {
 
-        List<JuegoEntidad> buscarConFiltros(
+    boolean existeTitulo(String titulo);
+
+    List<JuegoEntidad> buscarConFiltros(
                 String titulo,
                 String categoria,
                 Double precioMin,

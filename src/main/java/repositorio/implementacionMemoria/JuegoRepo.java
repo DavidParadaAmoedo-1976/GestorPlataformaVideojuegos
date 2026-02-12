@@ -53,6 +53,11 @@ public class JuegoRepo implements IJuegoRepo {
                 .toList();
     }
 
+    @Override
+    public boolean existeTitulo(String titulo) {
+        return juegosEntidad.stream()
+                .anyMatch(j -> j.getTitulo().equalsIgnoreCase(titulo));
+    }
 
 
     @Override

@@ -94,15 +94,15 @@ public class JuegoFormValidador {
         }
     }
 
-    private static void validarTituloUnico(String titulo,
-                                           List<ErrorModel> errores) {
+    private static void validarTituloUnico(String titulo, List<ErrorModel> errores) {
 
         if (titulo == null || juegoRepo == null) return;
 
-        if (juegoRepo.buscarPorTitulo(titulo) != null) {
+        if (juegoRepo.existeTitulo(titulo)) {
             errores.add(new ErrorModel("titulo", TipoErrorEnum.DUPLICADO));
         }
     }
+
 
     public static void setJuegoRepo(IJuegoRepo repo) {
         juegoRepo = repo;
