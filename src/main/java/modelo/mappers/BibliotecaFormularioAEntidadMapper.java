@@ -8,20 +8,18 @@ import java.time.LocalDate;
 public class BibliotecaFormularioAEntidadMapper {
 
     private BibliotecaFormularioAEntidadMapper() {
-        // evitar instanciación
     }
 
-    public static BibliotecaEntidad crearEntidad(Long id,
-                                                 BibliotecaForm form) {
+    public static BibliotecaEntidad crearEntidad(Long id, BibliotecaForm form) {
 
         return new BibliotecaEntidad(
                 id,
                 form.getIdUsuario(),
                 form.getIdJuego(),
-                LocalDate.now(),     // fechaAdquisicion automática
-                0,                   // horasDeJuego inicial
-                null,                // ultimaFechaDeJuego aún no ha jugado
-                false                // no instalado por defecto
+                LocalDate.now(),     // FechaAdquisicion automática
+                0,                   // HorasDeJuego inicial
+                null,                // "ultimaFechaDeJuego" -> aún no ha jugado
+                false                // No instalado por defecto
         );
     }
 }
