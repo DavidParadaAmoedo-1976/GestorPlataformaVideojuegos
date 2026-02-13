@@ -1,7 +1,7 @@
 package modelo.enums;
 
 public enum PaisEnum {
-    ESPAÑA,
+    ESPANA,
     FRANCIA,
     ALEMANIA,
     ITALIA,

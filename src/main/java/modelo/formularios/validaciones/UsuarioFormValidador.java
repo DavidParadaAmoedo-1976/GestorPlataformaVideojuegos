@@ -4,6 +4,7 @@ import excepciones.ValidationException;
 import modelo.enums.PaisEnum;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
+import repositorio.interfaces.IUsuarioRepo;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -26,9 +27,14 @@ public class UsuarioFormValidador {
             Pattern.compile("^(?!\\.)[a-zA-Z0-9._%+-]+(?<!\\.)@[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+$");
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$");
-
+    private static IUsuarioRepo usuarioRepo;
 
     private UsuarioFormValidador() {
+    }
+
+
+    public static void setUsuarioRepo(IUsuarioRepo repo) {
+        usuarioRepo = repo;
     }
 
     public static void validarUsuario(UsuarioForm form) throws ValidationException {
@@ -43,11 +49,13 @@ public class UsuarioFormValidador {
         // NombreUsuario
         ValidacionesComunes.obligatorio("nombreUsuario", form.getNombreUsuario(), errores);
         validarNombreUsuario(form.getNombreUsuario(), errores);
+        validarNombreUsuarioUnico(form.getNombreUsuario(), errores);
 
         // Email
         ValidacionesComunes.obligatorio("email", form.getEmail(), errores);
         ValidacionesComunes.LongitudMaxima("email", form.getEmail(), LONGITUD_EMAIL_USUARIO_MAX, errores);
         validarFormatoEmail(form.getEmail(), errores);
+        validarEmailUnico(form.getEmail(), errores);
 
         // Password
         ValidacionesComunes.obligatorio("password", form.getPassword(), errores);
@@ -56,7 +64,7 @@ public class UsuarioFormValidador {
         validarFormatoPassword(form.getPassword(), errores);
 
         // Nombre real
-        ValidacionesComunes.obligatorio("nombreReal", form.getNombreUsuario(), errores);
+        ValidacionesComunes.obligatorio("nombreReal", form.getNombreReal(), errores);
         ValidacionesComunes.LongitudMinima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MINIMA, errores);
         ValidacionesComunes.LongitudMaxima("nombreReal", form.getNombreReal(), LONGITUD_NOMBRE_REAL_MAXIMA, errores);
 
@@ -123,4 +131,20 @@ public class UsuarioFormValidador {
             errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.VALOR_EXCEDIDO));
         }
     }
+    private static void validarEmailUnico(String email, List<ErrorModel> errores) {
+        if (email != null && usuarioRepo != null &&
+                usuarioRepo.buscarPorEmail(email) != null) {
+
+            errores.add(new ErrorModel("email", TipoErrorEnum.DUPLICADO));
+        }
+    }
+
+    private static void validarNombreUsuarioUnico(String nombre, List<ErrorModel> errores) {
+        if (nombre != null && usuarioRepo != null &&
+                usuarioRepo.buscarPorNombreUsuario(nombre) != null) {
+
+            errores.add(new ErrorModel("nombreUsuario", TipoErrorEnum.DUPLICADO));
+        }
+    }
+
 }

@@ -14,8 +14,8 @@ public class BibliotecaEntidadADtoMapper {
 
         return new BibliotecaDto(
                 biblioteca.getIdBiblioteca(),
-                biblioteca.getUsuario(),
-                biblioteca.getJuego(),
+                biblioteca.getIdUsuario(),
+                biblioteca.getIdJuego(),
                 biblioteca.getFechaAdquisicion(),
                 biblioteca.getHorasDeJuego(),
                 biblioteca.getUltimaFechaDeJuego(),

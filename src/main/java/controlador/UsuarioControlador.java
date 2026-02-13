@@ -3,6 +3,7 @@ package controlador;
 import excepciones.ValidationException;
 import modelo.dto.UsuarioDto;
 import modelo.entidades.UsuarioEntidad;
+import modelo.enums.EstadoCuentaEnum;
 import modelo.enums.TipoErrorEnum;
 import modelo.formularios.UsuarioForm;
 import modelo.formularios.validaciones.ErrorModel;
@@ -12,7 +13,6 @@ import repositorio.interfaces.IUsuarioRepo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UsuarioControlador {
 
@@ -22,51 +22,134 @@ public class UsuarioControlador {
         this.usuarioRepo = usuarioRepo;
     }
 
-    // Crear usuario
-    public UsuarioDto crearUsuario(UsuarioForm form) throws ValidationException {
+    // =====================================================
+    // 1️⃣ REGISTRAR USUARIO
+    // =====================================================
+
+    public UsuarioDto registrarUsuario(UsuarioForm form)
+            throws ValidationException {
 
         UsuarioFormValidador.validarUsuario(form);
 
+        UsuarioEntidad usuario = usuarioRepo.crear(form);
+
+        return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
+    }
+
+    // =====================================================
+    // 2️⃣ CONSULTAR PERFIL
+    // =====================================================
+
+    public UsuarioDto consultarPerfil(Long id)
+            throws ValidationException {
+
+        if (id == null) {
+            throw new ValidationException(List.of(
+                    new ErrorModel("id", TipoErrorEnum.OBLIGATORIO)
+            ));
+        }
+
+        UsuarioEntidad usuario = usuarioRepo.buscarPorId(id);
+
+        if (usuario == null) {
+            throw new ValidationException(List.of(
+                    new ErrorModel("id", TipoErrorEnum.OTRO)
+            ));
+        }
+
+        return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
+    }
+
+    // =====================================================
+    // 3️⃣ AÑADIR SALDO
+    // =====================================================
+
+    public Double añadirSaldo(Long id, Double cantidad)
+            throws ValidationException {
+
         List<ErrorModel> errores = new ArrayList<>();
 
-        if (usuarioRepo.buscarPorEmail(form.getEmail()) != null) {
-            errores.add(new ErrorModel("email", TipoErrorEnum.DUPLICADO));
-        }
+        if (id == null)
+            errores.add(new ErrorModel("id", TipoErrorEnum.OBLIGATORIO));
 
-        if (usuarioRepo.buscarPorNombreUsuario(form.getNombreUsuario()) != null) {
-            errores.add(new ErrorModel("nombreUsuario", TipoErrorEnum.DUPLICADO));
-        }
+        if (cantidad == null || cantidad <= 0)
+            errores.add(new ErrorModel("cantidad", TipoErrorEnum.VALOR_NEGATIVO));
 
-        if (!errores.isEmpty()) {
+        if (cantidad != null && (cantidad < 5.0 || cantidad > 500.0))
+            errores.add(new ErrorModel("cantidad", TipoErrorEnum.RANGO_INVALIDO));
+
+        if (!errores.isEmpty())
             throw new ValidationException(errores);
-        }
-        return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuarioRepo.crear(form));
+
+        UsuarioEntidad usuario = usuarioRepo.buscarPorId(id);
+
+        if (usuario == null)
+            throw new ValidationException(List.of(
+                    new ErrorModel("id", TipoErrorEnum.OTRO)));
+
+        if (usuario.getEstadoCuenta() != EstadoCuentaEnum.ACTIVA)
+            throw new ValidationException(List.of(
+                    new ErrorModel("estadoCuenta", TipoErrorEnum.OTRO)));
+
+        usuario.setSaldo(usuario.getSaldo() + cantidad);
+
+        return usuario.getSaldo();
     }
 
-    // Buscar por id
-    public UsuarioDto buscarUsuarioPorId(Long id) {
+    // =====================================================
+    // 4️⃣ CONSULTAR SALDO
+    // =====================================================
 
-        UsuarioEntidad entidad = usuarioRepo.buscarPorId(id);
-        return UsuarioEntidadADtoMapper.usuarioEntidadADto(entidad);
+    public Double consultarSaldo(Long id)
+            throws ValidationException {
+
+        if (id == null)
+            throw new ValidationException(List.of(
+                    new ErrorModel("id", TipoErrorEnum.OBLIGATORIO)));
+
+        UsuarioEntidad usuario = usuarioRepo.buscarPorId(id);
+
+        if (usuario == null)
+            throw new ValidationException(List.of(
+                    new ErrorModel("id", TipoErrorEnum.OTRO)));
+
+        return usuario.getSaldo();
     }
 
-    // Listar todos
-    public List<UsuarioDto> listarUsuarios() {
+    // =====================================================
+    // 5️⃣ CAMBIAR ESTADO CUENTA
+    // =====================================================
 
-        return usuarioRepo.listarTodos()
-                .stream()
-                .map(UsuarioEntidadADtoMapper::usuarioEntidadADto)
-                .collect(Collectors.toList());
+    public UsuarioDto cambiarEstado(Long id,
+                                    EstadoCuentaEnum nuevoEstado)
+            throws ValidationException {
+
+        List<ErrorModel> errores = new ArrayList<>();
+
+        if (id == null)
+            errores.add(new ErrorModel("id", TipoErrorEnum.OBLIGATORIO));
+
+        if (nuevoEstado == null)
+            errores.add(new ErrorModel("estadoCuenta", TipoErrorEnum.OBLIGATORIO));
+
+        if (!errores.isEmpty())
+            throw new ValidationException(errores);
+
+        UsuarioEntidad usuario = usuarioRepo.buscarPorId(id);
+
+        if (usuario == null)
+            throw new ValidationException(List.of(
+                    new ErrorModel("id", TipoErrorEnum.OTRO)));
+
+        usuario.setEstadoCuenta(nuevoEstado);
+
+        return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
     }
 
-    // Actualizar usuario
-    public UsuarioDto actualizarUsuario(Long id, UsuarioForm form) {
+    // =====================================================
+    // 6️⃣ ELIMINAR USUARIO
+    // =====================================================
 
-        UsuarioEntidad entidad = usuarioRepo.actualizar(id, form);
-        return UsuarioEntidadADtoMapper.usuarioEntidadADto(entidad);
-    }
-
-    // Eliminar usuario
     public boolean eliminarUsuario(Long id) {
         return usuarioRepo.eliminar(id);
     }

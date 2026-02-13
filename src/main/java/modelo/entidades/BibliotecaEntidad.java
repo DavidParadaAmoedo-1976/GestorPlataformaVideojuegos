@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 
 public class BibliotecaEntidad {
-    private final UsuarioEntidad usuario = new UsuarioEntidad();
-    private final JuegoEntidad juego = new JuegoEntidad();
 
     private Long idBiblioteca;
     private Long idUsuario;
@@ -15,8 +13,14 @@ public class BibliotecaEntidad {
     private LocalDate ultimaFechaDeJuego;
     private boolean estadoInstalacion;
 
+    public BibliotecaEntidad(Long idBiblioteca,
+                             Long idUsuario,
+                             Long idJuego,
+                             LocalDate fechaAdquisicion,
+                             Integer horasDeJuego,
+                             LocalDate ultimaFechaDeJuego,
+                             boolean estadoInstalacion) {
 
-    public BibliotecaEntidad(Long idBiblioteca, Long idUsuario, Long idJuego, LocalDate fechaAdquisicion, Integer horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
         this.idBiblioteca = idBiblioteca;
         this.idUsuario = idUsuario;
         this.idJuego = idJuego;
@@ -25,7 +29,6 @@ public class BibliotecaEntidad {
         this.ultimaFechaDeJuego = ultimaFechaDeJuego;
         this.estadoInstalacion = estadoInstalacion;
     }
-
     public Long getIdBiblioteca() {
         return idBiblioteca;
     }
@@ -34,20 +37,25 @@ public class BibliotecaEntidad {
         this.idBiblioteca = idBiblioteca;
     }
 
-    public Long getUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setUsuario(Long idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public Long getJuego() {
+
+    public Long getIdJuego() {
         return idJuego;
     }
 
-    public void setJuego(Long juego) {
-        this.idJuego = juego;
+    public void setIdJuego(Long idJuego) {
+        this.idJuego = idJuego;
+    }
+
+    public void setJuego(Long idJuego) {
+        this.idJuego = idJuego;
     }
 
     public LocalDate getFechaAdquisicion() {

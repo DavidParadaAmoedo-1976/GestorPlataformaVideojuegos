@@ -7,17 +7,17 @@ import java.time.LocalDate;
 
 public class BibliotecaDto {
     private Long idBiblioteca;
-    private UsuarioEntidad usuarioEntidad;
-    private JuegoEntidad juego;
+    private Long idUsuario;
+    private Long idJuego;
     private LocalDate fechaAdquisicion;
     private Integer horasDeJuego;
     private LocalDate ultimaFechaDeJuego;
     private boolean estadoInstalacion;
 
-    public BibliotecaDto(Long idBiblioteca, UsuarioEntidad usuarioEntidad, JuegoEntidad juego, LocalDate fechaAdquisicion, Integer horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
+    public BibliotecaDto(Long idBiblioteca, Long idUsuario, Long idJuego, LocalDate fechaAdquisicion, Integer horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
         this.idBiblioteca = idBiblioteca;
-        this.usuarioEntidad = usuarioEntidad;
-        this.juego = juego;
+        this.idUsuario =
+        this.idJuego = idJuego;
         this.fechaAdquisicion = fechaAdquisicion;
         this.horasDeJuego = horasDeJuego;
         this.ultimaFechaDeJuego = ultimaFechaDeJuego;
@@ -32,20 +32,20 @@ public class BibliotecaDto {
         this.idBiblioteca = idBiblioteca;
     }
 
-    public UsuarioEntidad getUsuario() {
-        return usuarioEntidad;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(UsuarioEntidad usuarioEntidad) {
-        this.usuarioEntidad = usuarioEntidad;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public JuegoEntidad getJuego() {
-        return juego;
+    public Long getIdJuego() {
+        return idJuego;
     }
 
-    public void setJuego(JuegoEntidad juego) {
-        this.juego = juego;
+    public void setIdJuego(Long idJuego) {
+        this.idJuego = idJuego;
     }
 
     public LocalDate getFechaAdquisicion() {

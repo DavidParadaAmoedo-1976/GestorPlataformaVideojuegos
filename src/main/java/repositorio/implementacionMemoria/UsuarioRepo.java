@@ -30,7 +30,7 @@ public class UsuarioRepo implements IUsuarioRepo {
     @Override
     public UsuarioEntidad buscarPorId(Long id) {
         return usuariosEntidad.stream()
-                .filter(u -> u.getIdUsuario() == id)
+                .filter(u -> u.getIdUsuario().equals(id))
                 .findFirst()
                 .orElse(null);
     }
@@ -51,9 +51,12 @@ public class UsuarioRepo implements IUsuarioRepo {
 
     @Override
     public boolean eliminar(Long id) {
-        UsuarioEntidad usuario = buscarPorId(id);
-        System.out.println(usuario.getNombreUsuario() + " eliminado"); // mensaje provisional a falta de vista.
-        return usuariosEntidad.removeIf(u -> u.getIdUsuario() == id);
+        UsuarioEntidad usuarioEntidad = buscarPorId(id);
+        if (usuarioEntidad == null) {
+            return false;
+        }
+        System.out.println(usuarioEntidad.getNombreUsuario() + " eliminado"); // mensaje provisional a falta de vista.
+        return usuariosEntidad.removeIf(u -> u.getIdUsuario().equals(id));
     }
 
     @Override
