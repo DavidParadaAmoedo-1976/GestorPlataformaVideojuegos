@@ -1,14 +1,15 @@
 package controlador;
 
-import excepciones.ValidationException;
-import modelo.dto.UsuarioDto;
-import modelo.enums.EstadoCuentaEnum;
-import modelo.enums.PaisEnum;
-import modelo.formularios.UsuarioForm;
-import modelo.formularios.validaciones.UsuarioFormValidador;
+import org.DavidParada.controlador.UsuarioControlador;
+import org.DavidParada.excepciones.ValidationException;
+import org.DavidParada.modelo.dto.UsuarioDto;
+import org.DavidParada.modelo.enums.EstadoCuentaEnum;
+import org.DavidParada.modelo.enums.PaisEnum;
+import org.DavidParada.modelo.formularios.UsuarioForm;
+import org.DavidParada.modelo.formularios.validaciones.UsuarioFormValidador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import repositorio.implementacionMemoria.UsuarioRepo;
+import org.DavidParada.repositorio.implementacionMemoria.UsuarioRepo;
 
 import java.time.LocalDate;
 
@@ -35,6 +36,7 @@ class UsuarioControladorTest {
                 "Juan Perez",
                 PaisEnum.ESPANA,
                 LocalDate.of(2000,1,1),
+                LocalDate.of(2000,1,1),
                 null,
                 0.0,
                 null
@@ -58,6 +60,7 @@ class UsuarioControladorTest {
                 "Juan Perez",
                 PaisEnum.ESPANA,
                 LocalDate.of(2000,1,1),
+                LocalDate.of(2000,1,1),
                 null,
                 0.0,
                 null
@@ -70,6 +73,31 @@ class UsuarioControladorTest {
         );
     }
 
+//    @Test
+//    void añadirSaldoCorrectamente() throws ValidationException {
+//
+//        UsuarioForm form = new UsuarioForm(
+//                "usuarioSaldo",
+//                "saldo@email.com",
+//                "Password1",
+//                "Juan Perez",
+//                PaisEnum.ESPANA,
+//                LocalDate.of(2000,1,1),
+//                LocalDate.of(2000,1,1),
+//                null,
+//                0.0,
+//                null
+//        );
+//
+//        UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
+//
+//        Double nuevoSaldo = usuarioControlador.anadirSaldo(
+//                usuario.getIdUsuario(),
+//                50.0
+//        );
+//        assertEquals(50.0, nuevoSaldo);
+//    }
+
     @Test
     void añadirSaldoCorrectamente() throws ValidationException {
 
@@ -80,6 +108,7 @@ class UsuarioControladorTest {
                 "Juan Perez",
                 PaisEnum.ESPANA,
                 LocalDate.of(2000,1,1),
+                LocalDate.of(2000,1,1),
                 null,
                 0.0,
                 null
@@ -87,13 +116,18 @@ class UsuarioControladorTest {
 
         UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
 
-        Double nuevoSaldo = usuarioControlador.anadirSaldo(
+        // Acción: añadir saldo (método void)
+        usuarioControlador.anadirSaldo(
                 usuario.getIdUsuario(),
                 50.0
         );
 
-        assertEquals(50.0, nuevoSaldo);
+        // Recuperar usuario actualizado
+        UsuarioDto usuarioActualizado = usuarioControlador.consultarPerfil(usuario.getIdUsuario());
+
+        assertEquals(50.0, usuarioActualizado.getSaldo());
     }
+
 
     @Test
     void noPermiteSaldoFueraDeRango() throws ValidationException {
@@ -104,6 +138,7 @@ class UsuarioControladorTest {
                 "Password1",
                 "Juan Perez",
                 PaisEnum.ESPANA,
+                LocalDate.of(2000,1,1),
                 LocalDate.of(2000,1,1),
                 null,
                 0.0,
