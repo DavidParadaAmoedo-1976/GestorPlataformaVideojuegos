@@ -45,7 +45,6 @@ public class BibliotecaEntidad {
         this.idUsuario = idUsuario;
     }
 
-
     public Long getIdJuego() {
         return idJuego;
     }

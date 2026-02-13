@@ -44,17 +44,17 @@ public class JuegoEntidad {
     public JuegoEntidad() {
     }
 
-    public Double calcularPrecioFinal() {
-
-        if (descuento == null || descuento == 0) {
-            return precioBase;
-        }
-        double precioFinalTodosDecimales =
-                precioBase - (precioBase * descuento / 100.0);
-        BigDecimal precioFinal = BigDecimal.valueOf(precioFinalTodosDecimales)
-                .setScale(2, RoundingMode.HALF_UP);
-        return precioFinal.doubleValue();
-    }
+//    public Double calcularPrecioFinal() {
+//
+//        if (descuento == null || descuento == 0) {
+//            return precioBase;
+//        }
+//        double precioFinalTodosDecimales =
+//                precioBase - (precioBase * descuento / 100.0);
+//        BigDecimal precioFinal = BigDecimal.valueOf(precioFinalTodosDecimales)
+//                .setScale(2, RoundingMode.HALF_UP);
+//        return precioFinal.doubleValue();
+//    }
 
 
     public Long getIdJuego() {

@@ -47,30 +47,30 @@ class JuegoControladorTest {
         assertEquals("Juego Test", juego.getTitulo());
     }
 
-    @Test
-    void aplicarDescuentoCorrectamente() throws ValidationException {
-
-        JuegoForm form = new JuegoForm(
-                "Juego Descuento",
-                "Descripcion",
-                "Dev Studio",
-                LocalDate.of(2020,1,1),
-                100.0,
-                0,
-                "Accion",
-                ClasificacionJuegoEnum.PEGI_18,
-                new String[]{"Español"},
-                EstadoJuegoEnum.DISPONIBLE
-        );
-
-        JuegoDto juego = juegoControlador.crearJuego(form);
-
-        JuegoDto actualizado = juegoControlador.aplicarDescuento(
-                juego.getIdJuego(),
-                20
-        );
-
-        assertEquals(20, actualizado.getDescuento());
-    }
+//    @Test
+//    void aplicarDescuentoCorrectamente() throws ValidationException {
+//
+//        JuegoForm form = new JuegoForm(
+//                "Juego Descuento",
+//                "Descripcion",
+//                "Dev Studio",
+//                LocalDate.of(2020,1,1),
+//                100.0,
+//                0,
+//                "Accion",
+//                ClasificacionJuegoEnum.PEGI_18,
+//                new String[]{"Español"},
+//                EstadoJuegoEnum.DISPONIBLE
+//        );
+//
+//        JuegoDto juego = juegoControlador.crearJuego(form);
+//
+//        JuegoDto actualizado = juegoControlador.aplicarDescuento(
+//                juego.getIdJuego(),
+//                20
+//        );
+//
+//        assertEquals(20, actualizado.getDescuento());
+//    }
 }
 

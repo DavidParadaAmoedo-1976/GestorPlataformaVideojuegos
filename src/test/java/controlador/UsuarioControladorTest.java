@@ -87,7 +87,7 @@ class UsuarioControladorTest {
 
         UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
 
-        Double nuevoSaldo = usuarioControlador.añadirSaldo(
+        Double nuevoSaldo = usuarioControlador.anadirSaldo(
                 usuario.getIdUsuario(),
                 50.0
         );
@@ -113,7 +113,7 @@ class UsuarioControladorTest {
         UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
 
         assertThrows(ValidationException.class, () ->
-                usuarioControlador.añadirSaldo(
+                usuarioControlador.anadirSaldo(
                         usuario.getIdUsuario(),
                         1.0
                 )

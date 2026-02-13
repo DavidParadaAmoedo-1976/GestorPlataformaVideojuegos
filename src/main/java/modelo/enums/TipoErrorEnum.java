@@ -9,6 +9,7 @@ public enum TipoErrorEnum {
     VALOR_EXCEDIDO("Valor excedido"),
     RANGO_INVALIDO("Fuera de rango"),
     DUPLICADO("Duplicado"),
+    NO_EXISTE("No existe"),
     OTRO("Otro");
 
     private final String descripcion;

@@ -1,8 +1,5 @@
 package modelo.dto;
 
-import modelo.entidades.JuegoEntidad;
-import modelo.entidades.UsuarioEntidad;
-
 import java.time.LocalDate;
 
 public class BibliotecaDto {
@@ -16,7 +13,7 @@ public class BibliotecaDto {
 
     public BibliotecaDto(Long idBiblioteca, Long idUsuario, Long idJuego, LocalDate fechaAdquisicion, Integer horasDeJuego, LocalDate ultimaFechaDeJuego, boolean estadoInstalacion) {
         this.idBiblioteca = idBiblioteca;
-        this.idUsuario =
+        this.idUsuario = idUsuario;
         this.idJuego = idJuego;
         this.fechaAdquisicion = fechaAdquisicion;
         this.horasDeJuego = horasDeJuego;

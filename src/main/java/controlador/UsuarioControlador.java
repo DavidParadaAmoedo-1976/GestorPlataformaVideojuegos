@@ -22,9 +22,7 @@ public class UsuarioControlador {
         this.usuarioRepo = usuarioRepo;
     }
 
-    // =====================================================
-    // 1️⃣ REGISTRAR USUARIO
-    // =====================================================
+    //Registrar usuario
 
     public UsuarioDto registrarUsuario(UsuarioForm form)
             throws ValidationException {
@@ -36,9 +34,7 @@ public class UsuarioControlador {
         return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
     }
 
-    // =====================================================
-    // 2️⃣ CONSULTAR PERFIL
-    // =====================================================
+    // Consultar perfil
 
     public UsuarioDto consultarPerfil(Long id)
             throws ValidationException {
@@ -60,11 +56,9 @@ public class UsuarioControlador {
         return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
     }
 
-    // =====================================================
-    // 3️⃣ AÑADIR SALDO
-    // =====================================================
+    // Añadir saldo
 
-    public Double añadirSaldo(Long id, Double cantidad)
+    public Double anadirSaldo(Long id, Double cantidad)
             throws ValidationException {
 
         List<ErrorModel> errores = new ArrayList<>();
@@ -96,9 +90,7 @@ public class UsuarioControlador {
         return usuario.getSaldo();
     }
 
-    // =====================================================
-    // 4️⃣ CONSULTAR SALDO
-    // =====================================================
+    // Consultar saldo
 
     public Double consultarSaldo(Long id)
             throws ValidationException {
@@ -116,9 +108,7 @@ public class UsuarioControlador {
         return usuario.getSaldo();
     }
 
-    // =====================================================
-    // 5️⃣ CAMBIAR ESTADO CUENTA
-    // =====================================================
+    // Cambiar estado
 
     public UsuarioDto cambiarEstado(Long id,
                                     EstadoCuentaEnum nuevoEstado)
@@ -146,9 +136,7 @@ public class UsuarioControlador {
         return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
     }
 
-    // =====================================================
-    // 6️⃣ ELIMINAR USUARIO
-    // =====================================================
+    // Eliminar usuario
 
     public boolean eliminarUsuario(Long id) {
         return usuarioRepo.eliminar(id);

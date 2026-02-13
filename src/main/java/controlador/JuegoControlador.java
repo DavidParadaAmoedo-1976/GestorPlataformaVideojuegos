@@ -24,7 +24,7 @@ public class JuegoControlador {
         this.juegoRepo = juegoRepo;
     }
 
-    // Crear Juego
+    // Añadir Juego
 
     public JuegoDto crearJuego(JuegoForm form) throws ValidationException {
 
@@ -35,7 +35,7 @@ public class JuegoControlador {
         return JuegoEntidadADtoMapper.juegoEntidadADto(entidad);
     }
 
-    // Busqueda combinada
+    // Buscar juegos
 
     public List<JuegoDto> buscarJuegos(
             String titulo,
@@ -55,7 +55,7 @@ public class JuegoControlador {
                 .toList();
     }
 
-    // Mostrar juegos
+    // Consultar catalogo completo
 
     public List<JuegoDto> listarTodos(OrdenarJuegosEnum orden) {
 
@@ -65,16 +65,16 @@ public class JuegoControlador {
 
             switch (orden) {
 
-                case ALFABETICO -> juegos.sort(Comparator.comparing(JuegoEntidad::getTitulo));
+                case ALFABETICO -> juegos.sort(Comparator.comparing(j -> j.getTitulo()));
 
-                case PRECIO -> juegos.sort(Comparator.comparing(JuegoEntidad::getPrecioBase));
+                case PRECIO -> juegos.sort(Comparator.comparing(j -> j.getPrecioBase()));
 
-                case FECHA -> juegos.sort(Comparator.comparing(JuegoEntidad::getFechaLanzamiento));
+                case FECHA -> juegos.sort(Comparator.comparing(j -> j.getFechaLanzamiento()));
             }
         }
 
         return juegos.stream()
-                .map(JuegoEntidadADtoMapper::juegoEntidadADto)
+                .map(juegoEntidad -> JuegoEntidadADtoMapper.juegoEntidadADto(juegoEntidad))
                 .toList();
     }
 
@@ -93,7 +93,7 @@ public class JuegoControlador {
         JuegoEntidad juego = juegoRepo.buscarPorId(id);
 
         if (juego == null) {
-            errores.add(new ErrorModel("id", TipoErrorEnum.OTRO));
+            errores.add(new ErrorModel("id", TipoErrorEnum.NO_EXISTE));
             throw new ValidationException(errores);
         }
 
@@ -102,7 +102,7 @@ public class JuegoControlador {
 
     // Aplicar descuento
 
-    public JuegoDto aplicarDescuento(Long id, Integer descuento)
+    public void aplicarDescuento(Long id, Integer descuento)
             throws ValidationException {
 
         List<ErrorModel> errores = new ArrayList<>();
@@ -119,18 +119,21 @@ public class JuegoControlador {
         JuegoEntidad juego = juegoRepo.buscarPorId(id);
 
         if (juego == null) {
-            errores.add(new ErrorModel("id", TipoErrorEnum.OTRO));
+            errores.add(new ErrorModel("id", TipoErrorEnum.NO_EXISTE));
             throw new ValidationException(errores);
         }
-
-        juego.setDescuento(descuento);
-
-        return JuegoEntidadADtoMapper.juegoEntidadADto(juego);
+        juegoRepo.actualizar(juego.getIdJuego(), new JuegoForm(juego.getTitulo(), juego.getDescripcion(),
+                                                juego.getDesarrollador(), juego.getFechaLanzamiento(),
+                                                juego.getPrecioBase(), juego.getDescuento(),
+                                                juego.getCategoria(), juego.getClasificacionPorEdad(),
+                                                juego.getIdiomas(),  juego.getEstado()));
     }
 
-    // Modificar el estado del juego
 
-    public JuegoDto cambiarEstado(Long id,
+
+    // Cambiar estado del juego
+
+    public void cambiarEstado(Long id,
                                   EstadoJuegoEnum nuevoEstado)
             throws ValidationException {
 
@@ -148,13 +151,15 @@ public class JuegoControlador {
         JuegoEntidad juego = juegoRepo.buscarPorId(id);
 
         if (juego == null) {
-            errores.add(new ErrorModel("id", TipoErrorEnum.OTRO));
+            errores.add(new ErrorModel("id", TipoErrorEnum.NO_EXISTE));
             throw new ValidationException(errores);
         }
 
-        juego.setEstado(nuevoEstado);
-
-        return JuegoEntidadADtoMapper.juegoEntidadADto(juego);
+        juegoRepo.actualizar(juego.getIdJuego(), new JuegoForm(juego.getTitulo(), juego.getDescripcion(),
+                juego.getDesarrollador(), juego.getFechaLanzamiento(),
+                juego.getPrecioBase(), juego.getDescuento(),
+                juego.getCategoria(), juego.getClasificacionPorEdad(),
+                juego.getIdiomas(),  juego.getEstado()));
     }
 
     // Eliminar el juego
