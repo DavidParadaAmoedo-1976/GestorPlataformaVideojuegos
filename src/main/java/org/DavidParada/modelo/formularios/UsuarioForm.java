@@ -6,7 +6,6 @@ import org.DavidParada.modelo.enums.PaisEnum;
 import java.time.LocalDate;
 
 public class UsuarioForm {
-
     private String nombreUsuario;
     private String email;
     private String password;

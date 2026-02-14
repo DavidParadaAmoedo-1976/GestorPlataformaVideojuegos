@@ -1,4 +1,0 @@
-package org.DavidParada.modelo.formularios;
-
-public class UtilFormularios {
-}

@@ -6,7 +6,6 @@ import org.DavidParada.modelo.enums.EstadoJuegoEnum;
 import java.time.LocalDate;
 
 public class JuegoForm {
-    private Long idJuego;
     private String titulo;
     private String descripcion;
     private String desarrollador;
