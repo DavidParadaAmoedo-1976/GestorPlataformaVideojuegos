@@ -120,10 +120,10 @@ public class UsuarioControlador {
 
         return usuario.getSaldo();
     }
-
+//
 //    // Cambiar estado
 //
-//    public UsuarioDto cambiarEstado(Long id,
+//    public void cambiarEstado(Long id,
 //                                    EstadoCuentaEnum nuevoEstado)
 //            throws ValidationException {
 //
@@ -144,9 +144,18 @@ public class UsuarioControlador {
 //            throw new ValidationException(List.of(
 //                    new ErrorModel("id", TipoErrorEnum.NO_ENCONTRADO)));
 //
-//        usuario.setEstadoCuenta(nuevoEstado);
-//
-//        return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
+//        usuarioRepo.actualizar(usuario.getIdUsuario(), new UsuarioForm(
+//                usuario.getNombreUsuario(),
+//                usuario.getEmail(),
+//                usuario.getPassword(),
+//                usuario.getNombreReal(),
+//                usuario.getPais(),
+//                usuario.getFechaNacimiento(),
+//                usuario.getFechaRegistro(),
+//                usuario.getAvatar(),
+//                usuario.getSaldo(),
+//                nuevoEstado
+//        ));
 //    }
 //
 //    // Eliminar usuario

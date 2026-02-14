@@ -26,28 +26,148 @@ class UsuarioControladorTest {
         usuarioControlador = new UsuarioControlador(usuarioRepo);
     }
 
+    // Registrar nuevo usuario
+
     @Test
     void registrarUsuarioCorrectamente() throws ValidationException {
 
         UsuarioForm form = new UsuarioForm(
-                "usuarioTest",
-                "test@email.com",
+                "usuario1",
+                "usuario1@email.com",
                 "Password1",
-                "Juan Perez",
+                "Nombre Real",
                 PaisEnum.ESPANA,
                 LocalDate.of(2000,1,1),
-                LocalDate.of(2000,1,1),
-                null,
+                LocalDate.now(),
+                "avatar.png",
                 0.0,
-                null
+                EstadoCuentaEnum.ACTIVA
         );
 
         UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
 
         assertNotNull(usuario);
-        assertEquals("usuarioTest", usuario.getNombreUsuario());
-        assertEquals(0.0, usuario.getSaldo());
-        assertEquals(EstadoCuentaEnum.ACTIVA, usuario.getEstadoCuenta());
+        assertNotNull(usuario.getIdUsuario());
+        assertEquals("usuario1", usuario.getNombreUsuario());
+        assertEquals("usuario1@email.com", usuario.getEmail());
+    }
+
+    @Test
+    void registrarUsuarioFallaSiNombreEsNull() {
+
+        UsuarioForm form = new UsuarioForm(
+                null,
+                "usuario@email.com",
+                "Password1",
+                "Nombre Real",
+                PaisEnum.ESPANA,
+                LocalDate.of(2000,1,1),
+                LocalDate.now(),
+                "avatar.png",
+                0.0,
+                EstadoCuentaEnum.ACTIVA
+        );
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.registrarUsuario(form);
+        });
+    }
+
+    // Consultar perfil
+
+    @Test
+    void consultarPerfilDevuelveUsuarioCorrecto() throws ValidationException {
+
+        UsuarioDto usuario = crearUsuarioBase();
+
+        UsuarioDto consultado = usuarioControlador.consultarPerfil(usuario.getIdUsuario());
+
+        assertEquals(usuario.getIdUsuario(), consultado.getIdUsuario());
+    }
+
+    @Test
+    void consultarPerfilFallaSiIdEsNull() {
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.consultarPerfil(null);
+        });
+    }
+
+    @Test
+    void consultarPerfilFallaSiNoExiste() {
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.consultarPerfil(999L);
+        });
+    }
+
+
+    // Añadir saldo a cartera
+
+    @Test
+    void anadirSaldoCorrectamente() throws ValidationException {
+
+        UsuarioDto usuario = crearUsuarioBase();
+
+        usuarioControlador.anadirSaldo(usuario.getIdUsuario(), 50.0);
+
+        Double saldoActual = usuarioControlador.consultarSaldo(usuario.getIdUsuario());
+
+        assertEquals(50.0, saldoActual);
+    }
+
+    @Test
+    void anadirSaldoFallaSiCantidadEsNull() throws ValidationException {
+
+        UsuarioDto usuario = crearUsuarioBase();
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.anadirSaldo(usuario.getIdUsuario(), null);
+        });
+    }
+
+    @Test
+    void anadirSaldoFallaSiFueraDeRango() throws ValidationException {
+
+        UsuarioDto usuario = crearUsuarioBase();
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.anadirSaldo(usuario.getIdUsuario(), 3.0);
+        });
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.anadirSaldo(usuario.getIdUsuario(), 600.0);
+        });
+    }
+
+    // Consultar saldo
+
+    @Test
+    void consultarSaldoDevuelveCorrecto() throws ValidationException {
+
+        UsuarioDto usuario = crearUsuarioBase();
+
+        usuarioControlador.anadirSaldo(usuario.getIdUsuario(), 25.0);
+
+        Double saldo = usuarioControlador.consultarSaldo(usuario.getIdUsuario());
+
+        assertEquals(25.0, saldo);
+    }
+
+    @Test
+    void consultarSaldoFallaSiIdEsNull() {
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.consultarSaldo(null);
+        });
+    }
+
+    @Test
+    void consultarSaldoFallaSiUsuarioNoExiste() {
+
+        assertThrows(ValidationException.class, () -> {
+            usuarioControlador.consultarSaldo(999L);
+        });
     }
 
     @Test
@@ -71,36 +191,6 @@ class UsuarioControladorTest {
         assertThrows(ValidationException.class, () ->
                 usuarioControlador.registrarUsuario(form)
         );
-    }
-
-    @Test
-    void anadirSaldoCorrectamente() throws ValidationException {
-
-        UsuarioForm form = new UsuarioForm(
-                "usuarioSaldo",
-                "saldo@email.com",
-                "Password1",
-                "Juan Perez",
-                PaisEnum.ESPANA,
-                LocalDate.of(2000,1,1),
-                LocalDate.of(2000,1,1),
-                null,
-                0.0,
-                null
-        );
-
-        UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
-
-        // Acción: anadir saldo (método void)
-        usuarioControlador.anadirSaldo(
-                usuario.getIdUsuario(),
-                50.0
-        );
-
-        // Recuperar usuario actualizado
-        UsuarioDto usuarioActualizado = usuarioControlador.consultarPerfil(usuario.getIdUsuario());
-
-        assertEquals(50.0, usuarioActualizado.getSaldo());
     }
 
 
@@ -129,5 +219,25 @@ class UsuarioControladorTest {
                 )
         );
     }
+
+    private UsuarioDto crearUsuarioBase() throws ValidationException {
+
+        UsuarioForm form = new UsuarioForm(
+                "UsuarioBase",                    // válido
+                "base" + System.nanoTime() + "@email.com", // único
+                "Password1",                      // válido (mayúscula + minúscula + número)
+                "Nombre Real",
+                PaisEnum.ESPANA,                  // enum, no String
+                LocalDate.of(2000,1,1),
+                LocalDate.now(),
+                "avatar.png",
+                0.0,
+                EstadoCuentaEnum.ACTIVA
+        );
+
+        return usuarioControlador.registrarUsuario(form);
+    }
+
+
 }
 

@@ -27,7 +27,21 @@ public class JuegoFormularioAEntidadMapper {
         );
     }
 
-    public static void actualizarJuego(JuegoEntidad juegoEntidad, JuegoForm form) {
+    public static JuegoEntidad actualizarJuego(Long id, JuegoForm form) {
+
+        return new JuegoEntidad(
+                id,
+                form.getTitulo(),
+                form.getDescripcion(),
+                form.getDesarrollador(),
+                form.getFechaLanzamiento(),
+                form.getPrecioBase(),
+                form.getDescuento(),
+                form.getCategoria(),
+                form.getClasificacionPorEdad(),
+                form.getIdiomas(),
+                form.getEstado()
+        );
     }
 }
 

@@ -57,7 +57,7 @@ public class JuegoControlador {
 
     // Consultar catalogo completo
 
-    public List<JuegoDto> listarTodos(OrdenarJuegosEnum orden) {
+    public List<JuegoDto> consultarCatalogo(OrdenarJuegosEnum orden) {
 
         List<JuegoEntidad> juegos = juegoRepo.listarTodos();
 

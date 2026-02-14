@@ -6,7 +6,6 @@ import org.DavidParada.modelo.entidades.UsuarioEntidad;
 public class UsuarioEntidadADtoMapper {
 
     private UsuarioEntidadADtoMapper() {
-        // evita instanciar
     }
 
     public static UsuarioDto usuarioEntidadADto(UsuarioEntidad usuario) {

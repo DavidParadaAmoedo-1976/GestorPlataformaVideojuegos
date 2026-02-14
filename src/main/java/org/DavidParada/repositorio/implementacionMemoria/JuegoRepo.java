@@ -87,7 +87,10 @@ public class JuegoRepo implements IJuegoRepo {
     public JuegoEntidad actualizar(Long id, JuegoForm form) {
         JuegoEntidad juegoEntidad = buscarPorId(id);
         if (juegoEntidad == null) return null;
-        JuegoFormularioAEntidadMapper.actualizarJuego(juegoEntidad, form);
+
+        juegosEntidad.remove(juegoEntidad);
+
+        juegosEntidad.add(JuegoFormularioAEntidadMapper.actualizarJuego(id, form));
 
         return juegoEntidad;
     }
