@@ -73,33 +73,8 @@ class UsuarioControladorTest {
         );
     }
 
-//    @Test
-//    void añadirSaldoCorrectamente() throws ValidationException {
-//
-//        UsuarioForm form = new UsuarioForm(
-//                "usuarioSaldo",
-//                "saldo@email.com",
-//                "Password1",
-//                "Juan Perez",
-//                PaisEnum.ESPANA,
-//                LocalDate.of(2000,1,1),
-//                LocalDate.of(2000,1,1),
-//                null,
-//                0.0,
-//                null
-//        );
-//
-//        UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
-//
-//        Double nuevoSaldo = usuarioControlador.anadirSaldo(
-//                usuario.getIdUsuario(),
-//                50.0
-//        );
-//        assertEquals(50.0, nuevoSaldo);
-//    }
-
     @Test
-    void añadirSaldoCorrectamente() throws ValidationException {
+    void anadirSaldoCorrectamente() throws ValidationException {
 
         UsuarioForm form = new UsuarioForm(
                 "usuarioSaldo",
@@ -116,7 +91,7 @@ class UsuarioControladorTest {
 
         UsuarioDto usuario = usuarioControlador.registrarUsuario(form);
 
-        // Acción: añadir saldo (método void)
+        // Acción: anadir saldo (método void)
         usuarioControlador.anadirSaldo(
                 usuario.getIdUsuario(),
                 50.0

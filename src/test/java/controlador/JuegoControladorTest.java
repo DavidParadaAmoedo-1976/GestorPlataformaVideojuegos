@@ -38,7 +38,7 @@ class JuegoControladorTest {
                 0,
                 "Accion",
                 ClasificacionJuegoEnum.PEGI_18,
-                new String[]{"Español"},
+                new String[]{"Espanol"},
                 EstadoJuegoEnum.DISPONIBLE
         );
 
@@ -60,7 +60,7 @@ class JuegoControladorTest {
 //                0,
 //                "Accion",
 //                ClasificacionJuegoEnum.PEGI_18,
-//                new String[]{"Español"},
+//                new String[]{"Espanol"},
 //                EstadoJuegoEnum.DISPONIBLE
 //        );
 //

@@ -14,7 +14,7 @@ public class ReseniaRepo implements IReseniaRepo {
 
     private Long generarId() {
         return reseniasEntidades.stream()
-                .mapToLong(resenia -> resenia.getIdReseña())
+                .mapToLong(resenia -> resenia.getIdResena())
                 .max()
                 .orElse(0L) + 1;
     }

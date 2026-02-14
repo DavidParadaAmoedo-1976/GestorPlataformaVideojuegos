@@ -24,7 +24,7 @@ public class JuegoControlador {
         this.juegoRepo = juegoRepo;
     }
 
-    // Añadir Juego
+    // Anadir Juego
 
     public JuegoDto crearJuego(JuegoForm form) throws ValidationException {
 

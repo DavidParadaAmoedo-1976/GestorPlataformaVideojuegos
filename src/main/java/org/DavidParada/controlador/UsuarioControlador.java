@@ -56,7 +56,7 @@ public class UsuarioControlador {
         return UsuarioEntidadADtoMapper.usuarioEntidadADto(usuario);
     }
 
-    // Añadir saldo a cartera
+    // Anadir saldo a cartera
 
     public void anadirSaldo(Long id, Double cantidad)
             throws ValidationException {
@@ -66,11 +66,16 @@ public class UsuarioControlador {
         if (id == null)
             errores.add(new ErrorModel("id", TipoErrorEnum.OBLIGATORIO));
 
-        if (cantidad == null || cantidad <= 0)
-            errores.add(new ErrorModel("saldo", TipoErrorEnum.VALOR_NEGATIVO));
+        if (cantidad == null) {
+            errores.add(new ErrorModel("saldo", TipoErrorEnum.OBLIGATORIO));
+        } else {
 
-        if (cantidad != null && (cantidad < 5.0 || cantidad > 500.0))
-            errores.add(new ErrorModel("saldo", TipoErrorEnum.RANGO_INVALIDO));
+            if (cantidad <= 0)
+                errores.add(new ErrorModel("saldo", TipoErrorEnum.VALOR_NEGATIVO));
+
+            if (cantidad < 5.0 || cantidad > 500.0)
+                errores.add(new ErrorModel("saldo", TipoErrorEnum.RANGO_INVALIDO));
+        }
 
         if (!errores.isEmpty())
             throw new ValidationException(errores);
@@ -85,11 +90,17 @@ public class UsuarioControlador {
             throw new ValidationException(List.of(
                     new ErrorModel("estadoCuenta", TipoErrorEnum.ESTADO_INCORRECTO)));
 
-        usuarioRepo.actualizar(usuario.getIdUsuario(), new UsuarioForm(usuario.getNombreUsuario(), usuario.getEmail(),
-                                                                        usuario.getPassword(), usuario.getNombreReal(),
-                                                                        usuario.getPais(), usuario.getFechaNacimiento(),
-                                                                        usuario.getFechaRegistro(), usuario.getAvatar(),
-                                                                        cantidad, usuario.getEstadoCuenta()));
+        usuarioRepo.actualizar(usuario.getIdUsuario(), new UsuarioForm(
+                usuario.getNombreUsuario(),
+                usuario.getEmail(),
+                usuario.getPassword(),
+                usuario.getNombreReal(),
+                usuario.getPais(),
+                usuario.getFechaNacimiento(),
+                usuario.getFechaRegistro(),
+                usuario.getAvatar(),
+                usuario.getSaldo() + cantidad,
+                usuario.getEstadoCuenta()));
     }
 
     // Consultar saldo

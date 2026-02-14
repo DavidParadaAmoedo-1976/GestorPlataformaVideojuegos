@@ -45,7 +45,10 @@ public class UsuarioRepo implements IUsuarioRepo {
         UsuarioEntidad usuario = buscarPorId(id);
         if (usuario == null) return null;
 
-        UsuarioFormularioAEntidadMapper.actualizarEntidad(usuario, form);
+        usuariosEntidad.remove(usuario);
+
+        usuariosEntidad.add(UsuarioFormularioAEntidadMapper.actualizarEntidad(id, form));
+
         return usuario;
     }
 

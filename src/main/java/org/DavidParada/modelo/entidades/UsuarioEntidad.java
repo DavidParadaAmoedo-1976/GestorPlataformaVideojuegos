@@ -3,8 +3,6 @@ package org.DavidParada.modelo.entidades;
 import org.DavidParada.modelo.enums.EstadoCuentaEnum;
 import org.DavidParada.modelo.enums.PaisEnum;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class UsuarioEntidad {
@@ -20,7 +18,18 @@ public class UsuarioEntidad {
     private Double saldo;
     private EstadoCuentaEnum estadoCuenta;
 
-    public UsuarioEntidad(Long idUsuario, String nombreUsuario, String email, String password, String nombreReal, PaisEnum pais, LocalDate fechaNacimiento, LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioEntidad(Long idUsuario,
+                          String nombreUsuario,
+                          String email,
+                          String password,
+                          String nombreReal,
+                          PaisEnum pais,
+                          LocalDate fechaNacimiento,
+                          LocalDate fechaRegistro,
+                          String avatar,
+                          Double saldo,
+                          EstadoCuentaEnum estadoCuenta) {
+
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
@@ -30,8 +39,8 @@ public class UsuarioEntidad {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
         this.avatar = avatar;
-        this.saldo = 0.0;
-        this.estadoCuenta = EstadoCuentaEnum.ACTIVA;
+        this.saldo = saldo;
+        this.estadoCuenta = estadoCuenta;
     }
 
     public UsuarioEntidad() {
@@ -41,56 +50,28 @@ public class UsuarioEntidad {
         return idUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public String getNombreUsuario() {
         return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNombreReal() {
         return nombreReal;
     }
 
-    public void setNombreReal(String nombreReal) {
-        this.nombreReal = nombreReal;
-    }
-
     public PaisEnum getPais() {
         return this.pais;
     }
 
-    public void setPais(PaisEnum pais) {
-        this.pais = pais;
-    }
-
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
     }
 
     public LocalDate getFechaRegistro() {
@@ -101,28 +82,12 @@ public class UsuarioEntidad {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public Double getSaldo() {
         return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        if (saldo < 0) {
-            throw new IllegalArgumentException("El saldo no puede ser negativo");
-        }
-        BigDecimal bd = BigDecimal.valueOf(saldo)
-                .setScale(2, RoundingMode.HALF_UP);
-        this.saldo = bd.doubleValue();
     }
 
     public EstadoCuentaEnum getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(EstadoCuentaEnum estadoCuenta) {
-        this.estadoCuenta = estadoCuenta;
-    }
 }

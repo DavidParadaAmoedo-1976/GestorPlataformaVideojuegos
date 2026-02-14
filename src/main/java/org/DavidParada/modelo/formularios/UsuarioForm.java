@@ -21,8 +21,17 @@ public class UsuarioForm {
     public UsuarioForm() {
     }
 
-    public UsuarioForm(String nombreUsuario, String email, String password, String nombreReal,
-                       PaisEnum pais, LocalDate fechaNacimiento,LocalDate fechaRegistro, String avatar, Double saldo, EstadoCuentaEnum estadoCuenta) {
+    public UsuarioForm(String nombreUsuario,
+                       String email,
+                       String password,
+                       String nombreReal,
+                       PaisEnum pais,
+                       LocalDate fechaNacimiento,
+                       LocalDate fechaRegistro,
+                       String avatar,
+                       Double saldo,
+                       EstadoCuentaEnum estadoCuenta) {
+
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;

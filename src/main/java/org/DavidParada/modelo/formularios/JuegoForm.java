@@ -18,7 +18,16 @@ public class JuegoForm {
     private String[] idiomas;
     private EstadoJuegoEnum estado;
 
-    public JuegoForm(String titulo, String descripcion, String desarrollador, LocalDate fechaLanzamiento, Double precioBase, Integer descuento, String categoria, ClasificacionJuegoEnum clasificacionPorEdad, String[] idiomas, EstadoJuegoEnum estado) {
+    public JuegoForm(String titulo,
+                     String descripcion,
+                     String desarrollador,
+                     LocalDate fechaLanzamiento,
+                     Double precioBase,
+                     Integer descuento,
+                     String categoria,
+                     ClasificacionJuegoEnum clasificacionPorEdad,
+                     String[] idiomas, EstadoJuegoEnum estado) {
+
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.desarrollador = desarrollador;

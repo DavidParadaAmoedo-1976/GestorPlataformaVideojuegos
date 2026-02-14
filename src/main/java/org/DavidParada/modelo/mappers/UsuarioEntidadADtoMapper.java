@@ -14,7 +14,6 @@ public class UsuarioEntidadADtoMapper {
         if (usuario == null) return null;
 
         return new UsuarioDto(
-
                 usuario.getIdUsuario(),
                 usuario.getNombreUsuario(),
                 usuario.getEmail(),

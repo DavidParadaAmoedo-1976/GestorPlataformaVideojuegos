@@ -1,8 +1,10 @@
 package org.DavidParada.modelo.mappers;
 
 import org.DavidParada.modelo.entidades.JuegoEntidad;
+import org.DavidParada.modelo.entidades.UsuarioEntidad;
 import org.DavidParada.modelo.enums.EstadoJuegoEnum;
 import org.DavidParada.modelo.formularios.JuegoForm;
+import org.DavidParada.modelo.formularios.UsuarioForm;
 
 public class JuegoFormularioAEntidadMapper {
 
@@ -26,23 +28,6 @@ public class JuegoFormularioAEntidadMapper {
     }
 
     public static void actualizarJuego(JuegoEntidad juegoEntidad, JuegoForm form) {
-
-        juegoEntidad.setTitulo(form.getTitulo());
-        juegoEntidad.setDescripcion(form.getDescripcion());
-        juegoEntidad.setDesarrollador(form.getDesarrollador());
-        juegoEntidad.setFechaLanzamiento(form.getFechaLanzamiento());
-        juegoEntidad.setPrecioBase(form.getPrecioBase());
-        juegoEntidad.setCategoria(form.getCategoria());
-        juegoEntidad.setClasificacionPorEdad(form.getClasificacionPorEdad());
-        juegoEntidad.setIdiomas(form.getIdiomas());
-
-        if (form.getDescuento() != null) {
-            juegoEntidad.setDescuento(form.getDescuento());
-        }
-
-        if (form.getEstado() != null) {
-            juegoEntidad.setEstado(form.getEstado());
-        }
     }
 }
 
