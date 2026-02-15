@@ -3,19 +3,19 @@ package org.DavidParada.modelo.formularios;
 import java.time.LocalDate;
 
 public class BibliotecaForm {
-    private Long idUsuario;
-    private Long idJuego;
-    private LocalDate fechaAdquisicion;
-    private Integer horasDeJuego;
-    private LocalDate ultimaFechaDeJuego;
-    private boolean estadoInstalacion;
+    private final Long idUsuario;
+    private final Long idJuego;
+    private final LocalDate fechaAdquisicion;
+    private final Double horasDeJuego;
+    private final LocalDate ultimaFechaDeJuego;
+    private final boolean estadoInstalacion;
 
     public BibliotecaForm(Long idUsuario,
-                         Long idJuego,
-                         LocalDate fechaAdquisicion,
-                         Integer horasDeJuego,
-                         LocalDate ultimaFechaDeJuego,
-                         boolean estadoInstalacion) {
+                          Long idJuego,
+                          LocalDate fechaAdquisicion,
+                          Double horasDeJuego,
+                          LocalDate ultimaFechaDeJuego,
+                          boolean estadoInstalacion) {
 
         this.idUsuario = idUsuario;
         this.idJuego = idJuego;
@@ -37,7 +37,7 @@ public class BibliotecaForm {
         return fechaAdquisicion;
     }
 
-    public Integer getHorasDeJuego() {
+    public Double getHorasDeJuego() {
         return horasDeJuego;
     }
 

@@ -8,21 +8,21 @@ import org.DavidParada.modelo.enums.MetodoPagoEnum;
 import java.time.LocalDate;
 
 public class CompraForm {
-    private UsuarioEntidad usuarioEntidad;
-    private JuegoEntidad juego;
-    private LocalDate fechaCompra;
-    private MetodoPagoEnum metodoPago;
-    private Double precio;
-    private Integer descuento;
-    private EstadoCompraEnum estado;
+    private final UsuarioEntidad usuarioEntidad;
+    private final JuegoEntidad juego;
+    private final LocalDate fechaCompra;
+    private final MetodoPagoEnum metodoPago;
+    private final Double precio;
+    private final Integer descuento;
+    private final EstadoCompraEnum estado;
 
     public CompraForm(UsuarioEntidad usuarioEntidad,
-                     JuegoEntidad juego,
-                     LocalDate fechaCompra,
-                     MetodoPagoEnum metodoPago,
-                     Double precio,
-                     Integer descuento,
-                     EstadoCompraEnum estado) {
+                      JuegoEntidad juego,
+                      LocalDate fechaCompra,
+                      MetodoPagoEnum metodoPago,
+                      Double precio,
+                      Integer descuento,
+                      EstadoCompraEnum estado) {
 
         this.usuarioEntidad = usuarioEntidad;
         this.juego = juego;

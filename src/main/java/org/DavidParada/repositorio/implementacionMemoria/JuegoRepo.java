@@ -73,7 +73,6 @@ public class JuegoRepo implements IJuegoRepo {
     public JuegoEntidad buscarPorId(Long id) {
         return juegosEntidad.stream()
                 .filter(j -> j.getIdJuego().equals(id))
-
                 .findFirst()
                 .orElse(null);
     }
@@ -101,8 +100,8 @@ public class JuegoRepo implements IJuegoRepo {
         if (juegoEntidad == null) {
             return false;
         }
-        System.out.println(juegoEntidad.getTitulo() + " eliminado");
-        return juegosEntidad.removeIf(u -> u.getIdJuego().equals(id));
+        System.out.println(juegoEntidad.getTitulo() + " eliminado"); // Esto lo hará la vista
+        return juegosEntidad.removeIf(j -> j.getIdJuego().equals(id));
     }
 
 }

@@ -10,11 +10,17 @@ public class ValidacionesComunes {
     private ValidacionesComunes() {
     }
 
-    public static void obligatorio(String campo, String valor, List<ErrorModel> errores) {
-        if (valor == null || valor.isBlank()) {
+    public static void obligatorio(String campo, Object valor, List<ErrorModel> errores) {
+        if (valor == null) {
+            errores.add(new ErrorModel(campo, TipoErrorEnum.OBLIGATORIO));
+            return;
+        }
+
+        if (valor instanceof String string && string.isBlank()) {
             errores.add(new ErrorModel(campo, TipoErrorEnum.OBLIGATORIO));
         }
     }
+
 
     public static void LongitudMaxima(String campo, String valor, Integer max, List<ErrorModel> errores) {
         if (valor != null && valor.length() > max) {
@@ -28,11 +34,17 @@ public class ValidacionesComunes {
         }
     }
 
-    public static void valorNoNegativo(String campo, Double valor, List<ErrorModel> errores) {
-        if (valor < 0) {
+    public static void valorNoNegativo(String campo, Number valor, List<ErrorModel> errores) {
+
+        if (valor == null) {
+            return; // la obligatoriedad se valida aparte
+        }
+
+        if (valor.doubleValue() < 0) {
             errores.add(new ErrorModel(campo, TipoErrorEnum.VALOR_NEGATIVO));
         }
     }
+
 
     public static void valorFueraDeRango(String campo, Number valor, Double min, Double max, List<ErrorModel> errores) {
         if (valor == null) {

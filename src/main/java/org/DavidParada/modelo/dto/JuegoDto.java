@@ -6,17 +6,17 @@ import org.DavidParada.modelo.enums.EstadoJuegoEnum;
 import java.time.LocalDate;
 
 public class JuegoDto {
-    private Long idJuego;
-    private String titulo;
-    private String descripcion;
-    private String desarrollador;
-    private LocalDate fechaLanzamiento;
-    private Double precioBase;
-    private Integer descuento;
-    private String categoria;
-    private ClasificacionJuegoEnum clasificacionPorEdad;
-    private String[] idiomas;
-    private EstadoJuegoEnum estado;
+    private final Long idJuego;
+    private final String titulo;
+    private final String descripcion;
+    private final String desarrollador;
+    private final LocalDate fechaLanzamiento;
+    private final Double precioBase;
+    private final Integer descuento;
+    private final String categoria;
+    private final ClasificacionJuegoEnum clasificacionPorEdad;
+    private final String[] idiomas;
+    private final EstadoJuegoEnum estado;
 
     public JuegoDto(Long idJuego,
                     String titulo,

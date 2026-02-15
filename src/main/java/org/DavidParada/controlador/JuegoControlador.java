@@ -12,6 +12,7 @@ import org.DavidParada.modelo.formularios.validaciones.ErrorModel;
 import org.DavidParada.modelo.formularios.validaciones.JuegoFormValidador;
 import org.DavidParada.modelo.mappers.JuegoEntidadADtoMapper;
 import org.DavidParada.repositorio.interfaces.IJuegoRepo;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -30,9 +31,9 @@ public class JuegoControlador {
 
         JuegoFormValidador.validarJuego(form);
 
-        JuegoEntidad entidad = juegoRepo.crear(form);
+        JuegoEntidad juegoEntidad = juegoRepo.crear(form);
 
-        return JuegoEntidadADtoMapper.juegoEntidadADto(entidad);
+        return JuegoEntidadADtoMapper.juegoEntidadADto(juegoEntidad);
     }
 
     // Buscar juegos
@@ -51,7 +52,7 @@ public class JuegoControlador {
         );
 
         return juegos.stream()
-                .map(JuegoEntidadADtoMapper::juegoEntidadADto)
+                .map(j ->JuegoEntidadADtoMapper.juegoEntidadADto(j))
                 .toList();
     }
 
@@ -74,7 +75,7 @@ public class JuegoControlador {
         }
 
         return juegos.stream()
-                .map(juegoEntidad -> JuegoEntidadADtoMapper.juegoEntidadADto(juegoEntidad))
+                .map( j -> JuegoEntidadADtoMapper.juegoEntidadADto(j))
                 .toList();
     }
 
@@ -123,18 +124,17 @@ public class JuegoControlador {
             throw new ValidationException(errores);
         }
         juegoRepo.actualizar(juego.getIdJuego(), new JuegoForm(juego.getTitulo(), juego.getDescripcion(),
-                                                juego.getDesarrollador(), juego.getFechaLanzamiento(),
-                                                juego.getPrecioBase(), descuento,
-                                                juego.getCategoria(), juego.getClasificacionPorEdad(),
-                                                juego.getIdiomas(),  juego.getEstado()));
+                juego.getDesarrollador(), juego.getFechaLanzamiento(),
+                juego.getPrecioBase(), descuento,
+                juego.getCategoria(), juego.getClasificacionPorEdad(),
+                juego.getIdiomas(), juego.getEstado()));
     }
-
 
 
     // Cambiar estado del juego
 
     public void cambiarEstado(Long id,
-                                  EstadoJuegoEnum nuevoEstado)
+                              EstadoJuegoEnum nuevoEstado)
             throws ValidationException {
 
         List<ErrorModel> errores = new ArrayList<>();
@@ -159,7 +159,7 @@ public class JuegoControlador {
                 juego.getDesarrollador(), juego.getFechaLanzamiento(),
                 juego.getPrecioBase(), juego.getDescuento(),
                 juego.getCategoria(), juego.getClasificacionPorEdad(),
-                juego.getIdiomas(),  nuevoEstado));
+                juego.getIdiomas(), nuevoEstado));
     }
 
 //    // Eliminar el juego

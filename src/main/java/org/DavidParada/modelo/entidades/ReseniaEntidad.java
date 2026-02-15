@@ -3,14 +3,14 @@ package org.DavidParada.modelo.entidades;
 import java.time.LocalDate;
 
 public class ReseniaEntidad {
-    private Long idResena;
-    private UsuarioEntidad usuarioEntidad;
-    private JuegoEntidad juego;
-    private boolean recomendado;
-    private String textoResena;
-    private Integer cantidadHorasJugadas;
-    private LocalDate fechaPublicacion;
-    private Integer estadoPublicacion;
+    private final Long idResena;
+    private final UsuarioEntidad usuarioEntidad;
+    private final JuegoEntidad juego;
+    private final boolean recomendado;
+    private final String textoResena;
+    private final Integer cantidadHorasJugadas;
+    private final LocalDate fechaPublicacion;
+    private final Integer estadoPublicacion;
 
     public ReseniaEntidad(Long idResena,
                           UsuarioEntidad usuarioEntidad,

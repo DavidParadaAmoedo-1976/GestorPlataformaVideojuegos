@@ -3,8 +3,6 @@ package org.DavidParada.modelo.entidades;
 import org.DavidParada.modelo.enums.ClasificacionJuegoEnum;
 import org.DavidParada.modelo.enums.EstadoJuegoEnum;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class JuegoEntidad {

@@ -12,13 +12,13 @@ public interface IJuegoRepo extends ICrud<JuegoEntidad, JuegoForm, Long> {
     boolean existeTitulo(String titulo);
 
     List<JuegoEntidad> buscarConFiltros(
-                String titulo,
-                String categoria,
-                Double precioMin,
-                Double precioMax,
-                ClasificacionJuegoEnum clasificacion,
-                EstadoJuegoEnum estado
-        );
+            String titulo,
+            String categoria,
+            Double precioMin,
+            Double precioMax,
+            ClasificacionJuegoEnum clasificacion,
+            EstadoJuegoEnum estado
+    );
 
-    }
+}
 

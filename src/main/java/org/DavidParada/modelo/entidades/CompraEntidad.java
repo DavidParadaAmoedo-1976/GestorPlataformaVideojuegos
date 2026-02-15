@@ -6,14 +6,14 @@ import org.DavidParada.modelo.enums.MetodoPagoEnum;
 import java.time.LocalDate;
 
 public class CompraEntidad {
-    private Long idCompra;
-    private UsuarioEntidad usuarioEntidad;
-    private JuegoEntidad juego;
-    private LocalDate fechaCompra;
-    private MetodoPagoEnum metodoPago;
-    private Double precio;
-    private Integer descuento;
-    private EstadoCompraEnum estado;
+    private final Long idCompra;
+    private final UsuarioEntidad usuarioEntidad;
+    private final JuegoEntidad juego;
+    private final LocalDate fechaCompra;
+    private final MetodoPagoEnum metodoPago;
+    private final Double precio;
+    private final Integer descuento;
+    private final EstadoCompraEnum estado;
 
     public CompraEntidad(Long idCompra,
                          UsuarioEntidad usuarioEntidad,

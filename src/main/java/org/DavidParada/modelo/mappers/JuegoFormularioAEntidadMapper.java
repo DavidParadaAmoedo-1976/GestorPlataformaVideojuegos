@@ -1,10 +1,8 @@
 package org.DavidParada.modelo.mappers;
 
 import org.DavidParada.modelo.entidades.JuegoEntidad;
-import org.DavidParada.modelo.entidades.UsuarioEntidad;
 import org.DavidParada.modelo.enums.EstadoJuegoEnum;
 import org.DavidParada.modelo.formularios.JuegoForm;
-import org.DavidParada.modelo.formularios.UsuarioForm;
 
 public class JuegoFormularioAEntidadMapper {
 

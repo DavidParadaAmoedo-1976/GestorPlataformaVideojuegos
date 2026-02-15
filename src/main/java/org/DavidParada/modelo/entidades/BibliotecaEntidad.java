@@ -5,19 +5,19 @@ import java.time.LocalDate;
 
 public class BibliotecaEntidad {
 
-    private Long idBiblioteca;
-    private Long idUsuario;
-    private Long idJuego;
-    private LocalDate fechaAdquisicion;
-    private Integer horasDeJuego;
-    private LocalDate ultimaFechaDeJuego;
-    private boolean estadoInstalacion;
+    private final Long idBiblioteca;
+    private final Long idUsuario;
+    private final Long idJuego;
+    private final LocalDate fechaAdquisicion;
+    private final Double horasDeJuego;
+    private final LocalDate ultimaFechaDeJuego;
+    private final boolean estadoInstalacion;
 
     public BibliotecaEntidad(Long idBiblioteca,
                              Long idUsuario,
                              Long idJuego,
                              LocalDate fechaAdquisicion,
-                             Integer horasDeJuego,
+                             Double horasDeJuego,
                              LocalDate ultimaFechaDeJuego,
                              boolean estadoInstalacion) {
 
@@ -29,6 +29,7 @@ public class BibliotecaEntidad {
         this.ultimaFechaDeJuego = ultimaFechaDeJuego;
         this.estadoInstalacion = estadoInstalacion;
     }
+
     public Long getIdBiblioteca() {
         return idBiblioteca;
     }
@@ -45,7 +46,7 @@ public class BibliotecaEntidad {
         return fechaAdquisicion;
     }
 
-    public Integer getHorasDeJuego() {
+    public Double getHorasDeJuego() {
         return horasDeJuego;
     }
 

@@ -131,6 +131,7 @@ public class UsuarioFormValidador {
             errores.add(new ErrorModel("fechaNacimiento", TipoErrorEnum.VALOR_EXCEDIDO));
         }
     }
+
     private static void validarEmailUnico(String email, List<ErrorModel> errores) {
         if (email != null && usuarioRepo != null &&
                 usuarioRepo.buscarPorEmail(email) != null) {

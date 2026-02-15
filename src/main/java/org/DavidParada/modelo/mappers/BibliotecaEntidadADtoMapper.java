@@ -8,7 +8,7 @@ public class BibliotecaEntidadADtoMapper {
     public BibliotecaEntidadADtoMapper() {
     }
 
-    public static BibliotecaDto entidadADto(BibliotecaEntidad biblioteca) {
+    public static BibliotecaDto bibliotecaEntidadADto(BibliotecaEntidad biblioteca) {
 
         if (biblioteca == null) return null;
 

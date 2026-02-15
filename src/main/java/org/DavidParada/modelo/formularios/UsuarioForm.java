@@ -67,7 +67,9 @@ public class UsuarioForm {
         return fechaNacimiento;
     }
 
-    public LocalDate getFechaRegistro() {return fechaRegistro; }
+    public LocalDate getFechaRegistro() {
+        return fechaRegistro;
+    }
 
     public String getAvatar() {
         return avatar;

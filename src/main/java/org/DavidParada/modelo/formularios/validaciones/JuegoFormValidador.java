@@ -21,7 +21,7 @@ public class JuegoFormValidador {
         List<ErrorModel> errores = new ArrayList<>();
 
         if (form == null) {
-            errores.add(new ErrorModel("form", TipoErrorEnum.OTRO));
+            errores.add(new ErrorModel("form", TipoErrorEnum.NO_ENCONTRADO));
             throw new ValidationException(errores);
         }
 

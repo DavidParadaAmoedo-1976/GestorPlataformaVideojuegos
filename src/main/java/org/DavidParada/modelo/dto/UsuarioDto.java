@@ -6,17 +6,17 @@ import org.DavidParada.modelo.enums.PaisEnum;
 import java.time.LocalDate;
 
 public class UsuarioDto {
-    private Long idUsuario;
-    private String nombreUsuario;
-    private String email;
-    private String password;
-    private String nombreReal;
-    private PaisEnum pais;
-    private LocalDate fechaNacimiento;
     private final LocalDate fechaRegistro;
-    private String avatar;
-    private Double saldo;
-    private EstadoCuentaEnum estadoCuenta;
+    private final Long idUsuario;
+    private final String nombreUsuario;
+    private final String email;
+    private final String password;
+    private final String nombreReal;
+    private final PaisEnum pais;
+    private final LocalDate fechaNacimiento;
+    private final String avatar;
+    private final Double saldo;
+    private final EstadoCuentaEnum estadoCuenta;
 
     public UsuarioDto(Long idUsuario,
                       String nombreUsuario,
